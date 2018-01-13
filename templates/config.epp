@@ -1,0 +1,26 @@
+<%- | Hash $configs
+| -%>
+<?php
+// Managed by puppet (module postfixadmin)
+
+<% $configs.each | $index, $value | { -%>
+<% if ( $value =~ String ) { -%>
+$CONF['<%= $index %>'] = '<%= $value -%>';
+<% } -%>
+<% if ( $value =~ Integer ) { -%>
+$CONF['<%= $index %>'] = <%= $value -%>;
+<% } -%>
+<% if ( $value =~ Array ) { -%>
+$CONF['<%= $index %>'] = array('<%= $value.join("','") -%>');
+<% } -%>
+<% if ( $value =~ Hash ) { -%>
+$CONF['<%= $index %>'] = array(
+<% $value.each | $k, $v | { -%>
+   '<%= $k -%>' => '<%= $v -%>',
+<% } -%>
+);
+<% } -%>
+<% if ( $value =~ Boolean ) { -%>
+$CONF['<%= $index %>'] = <%= $value -%>;
+<% } -%>
+<% } -%>

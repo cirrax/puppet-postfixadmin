@@ -16,9 +16,21 @@
 
 This module is used to configure postfixadmin.
 
+It assumes, you are using hiera to configure.
+
 ## Usage
 
-Todo
+Just include the postfixadmin class and add some hiera definitions....
+
+Details about the configuration possibilities are docomented in the classes.
+
+## Manage domains using cli
+
+using postfixadmin::cli::create_admin
+using postfixadmin::cli::create_domain
+using postfixadmin::cli::create_aliasdomain
+
+you can create admins, domains and aliasdomains using puppet.
 
 ## Contributing
 

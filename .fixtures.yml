@@ -1,0 +1,14 @@
+---
+fixtures:
+  repositories:
+          "apache":
+                  repo: "https://github.com/puppetlabs/puppetlabs-apache.git"
+          "mysql":
+                  repo: "https://github.com/puppetlabs/puppetlabs-mysql.git"
+          "stdlib":
+                  repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
+          "concat":
+                  repo:  "https://github.com/puppetlabs/puppetlabs-concat.git"
+                  branch: '2.1.x'
+  symlinks:
+          "postfixadmin": "#{source_dir}"
