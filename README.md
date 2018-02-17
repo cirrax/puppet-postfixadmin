@@ -42,3 +42,10 @@ For pull requests, it is very much appreciated to check your Puppet manifest wit
 and the available spec tests  in order to follow the recommended Puppet style guidelines
 from the Puppet Labs style guide.
 
+### Authors
+
+This module is mainly written by [Cirrax GmbH](https://cirrax.com).
+
+See the [list of contributors](https://github.com/cirrax/puppet-postfixadmin/graphs/contributors)
+for a list of all contributors.
+
