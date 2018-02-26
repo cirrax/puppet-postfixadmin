@@ -3,7 +3,7 @@
   "version": "1.0.3",
   "author": "Cirrax GmbH",
   "license": "GPL-3.0",
-  "summary": "A module to configure postixadmin",
+  "summary": "A module to configure postfixadmin",
   "source": "https://github.com/cirrax/puppet-postfixadmin",
   "project_page": "https://github.com/cirrax/puppet-postfixadmin",
   "issues_url": "https://github.com/cirrax/puppet-postfixadmin/issues",
