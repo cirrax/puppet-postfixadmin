@@ -36,10 +36,10 @@ define postfixadmin::cli::create_admin (
   }
 
   exec {"postfixadmin create_admin ${admin}":
-    path    => $postfixadmin::cli::params::path,
+    path     => $postfixadmin::cli::params::path,
     provider => 'shell',
-    command => "${cmd} admin add ${admin} --password ${pw} --password2 ${pw} ${_suadmin}| grep 'has been added'",
-    unless  => "${cmd} admin view ${admin} | grep 'Active: YES' 2>/dev/null",
+    command  => "${cmd} admin add ${admin} --password ${pw} --password2 ${pw} ${_suadmin}| grep 'has been added'",
+    unless   => "${cmd} admin view ${admin} | grep 'Active: YES' 2>/dev/null",
   }
 
 }
