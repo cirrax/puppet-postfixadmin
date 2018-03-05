@@ -26,7 +26,6 @@
 #    if true, redirects all non https requests to https
 #    defaults to true.
 #  $create_resources
-#  $create_resources
 #    a Hash of Hashes to create additional resources eg. to 
 #    retrieve a certificate.
 #    Defaults to {} (do not create any additional resources)
