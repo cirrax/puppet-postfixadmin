@@ -3,15 +3,15 @@
 # Parameters are inherited from postfixadmin::vhost
 # 
 class postfixadmin::vhost::apache (
-  $servername      = $postfixadmin::vhost::servername,
-  $serveraliases   = $postfixadmin::vhost::serveraliases,
-  $docroot         = $postfixadmin::vhost::docroot,
-  $apache_vhost    = {},
-  $ssl             = $postfixadmin::vhost::ssl,
-  $ssl_cert        = $postfixadmin::vhost::ssl_cert,
-  $ssl_key         = $postfixadmin::vhost::ssl_key,
-  $ssl_chain       = $postfixadmin::vhost::ssl_chain,
-  $redirect_to_ssl = $postfixadmin::vhost::redirect_to_ssl,
+  String  $servername      = $postfixadmin::vhost::servername,
+  String  $serveraliases   = $postfixadmin::vhost::serveraliases,
+  String  $docroot         = $postfixadmin::vhost::docroot,
+  Hash    $apache_vhost    = {},
+  String  $ssl             = $postfixadmin::vhost::ssl,
+  String  $ssl_cert        = $postfixadmin::vhost::ssl_cert,
+  String  $ssl_key         = $postfixadmin::vhost::ssl_key,
+  String  $ssl_chain       = $postfixadmin::vhost::ssl_chain,
+  Boolean $redirect_to_ssl = $postfixadmin::vhost::redirect_to_ssl,
 ) inherits postfixadmin::vhost {
 
   include ::apache

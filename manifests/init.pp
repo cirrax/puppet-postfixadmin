@@ -21,13 +21,13 @@
 #     Defaults to {}
 #
 class postfixadmin (
-  $ensure_database = false,
-  $ensure_vhost    = false,
-  $ensure_postfix_queries = false,
-  $ensure_dovecot_queries = false,
-  $admins          = {},
-  $domains         = {},
-  $aliasdomains    = {},
+  Boolean $ensure_database = false,
+  Boolean $ensure_vhost    = false,
+  Boolean $ensure_postfix_queries = false,
+  Boolean $ensure_dovecot_queries = false,
+  Hash $admins          = {},
+  Hash $domains         = {},
+  Hash $aliasdomains    = {},
 ) inherits postfixadmin::params {
 
   if $ensure_database {

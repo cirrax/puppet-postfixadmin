@@ -15,9 +15,9 @@
 #
 #
 define postfixadmin::cli::create_admin (
-  $admin      = $title,
-  $password   = '',
-  $superadmin = false,
+  String  $admin      = $title,
+  String  $password   = '',
+  Boolean $superadmin = false,
 ){
 
   include ::postfixadmin::cli::params

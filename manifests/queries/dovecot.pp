@@ -47,20 +47,20 @@
 #   defaults to true
 #
 class postfixadmin::queries::dovecot (
-  $dbpass = 'CHANGEME',
-  $dbuser                  = 'postfixadmin',
-  $dbname                  = 'postfixadmin',
-  $host                    = 'localhost',
-  $mysql_flags             = [],
-  $dir                     = $postfixadmin::params::dovecot_dir,
-  $owner                   = $postfixadmin::params::dovecot_owner,
-  $group                   = $postfixadmin::params::dovecot_group,
-  $mode                    = $postfixadmin::params::dovecot_mode,
-  $default_password_scheme = 'MD5-CRYPT',
-  $mboxpath                = '',
-  $uid                     = '',
-  $gid                     = '',
-  $quota                   = true,
+  String  $dbpass                  = 'CHANGEME',
+  String  $dbuser                  = 'postfixadmin',
+  String  $dbname                  = 'postfixadmin',
+  String  $host                    = 'localhost',
+  Array   $mysql_flags             = [],
+  String  $dir                     = $postfixadmin::params::dovecot_dir,
+  String  $owner                   = $postfixadmin::params::dovecot_owner,
+  String  $group                   = $postfixadmin::params::dovecot_group,
+  String  $mode                    = $postfixadmin::params::dovecot_mode,
+  String  $default_password_scheme = 'MD5-CRYPT',
+  String  $mboxpath                = '',
+  String  $uid                     = '',
+  String  $gid                     = '',
+  Boolean $quota                   = true,
 ) inherits postfixadmin::params {
 
   file{ $dir:

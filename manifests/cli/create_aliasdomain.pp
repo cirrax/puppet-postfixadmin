@@ -13,9 +13,9 @@
 #     before using this define.
 #
 define postfixadmin::cli::create_aliasdomain (
-  $target_domain,
-  $domain        = $title,
-  $create_domain = true,
+  String  $target_domain,
+  String  $domain        = $title,
+  Boolean $create_domain = true,
 ){
 
   include ::postfixadmin::cli::params

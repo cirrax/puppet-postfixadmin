@@ -27,14 +27,14 @@
 #   defaults to $postfixadmin::params::map_mode,
 #
 class postfixadmin::queries::postfix (
-  $dbpass    = 'CHANGEME',
-  $dbuser    = 'postfixadmin',
-  $dbname    = 'postfixadmin',
-  $hosts     = [ 'localhost' ],
-  $dir   = $postfixadmin::params::map_dir,
-  $owner = $postfixadmin::params::map_owner,
-  $group = $postfixadmin::params::map_group,
-  $mode  = $postfixadmin::params::map_mode,
+  String $dbpass    = 'CHANGEME',
+  String $dbuser    = 'postfixadmin',
+  String $dbname    = 'postfixadmin',
+  Array  $hosts     = [ 'localhost' ],
+  String $dir   = $postfixadmin::params::map_dir,
+  String $owner = $postfixadmin::params::map_owner,
+  String $group = $postfixadmin::params::map_group,
+  String $mode  = $postfixadmin::params::map_mode,
 ) inherits postfixadmin::params {
 
   file{ $dir:

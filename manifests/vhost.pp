@@ -45,16 +45,16 @@
 #    }
 #
 class postfixadmin::vhost (
-  $type             = 'apache',
-  $servername       = $::fqdn,
-  $serveraliases    = [],
-  $docroot          = $postfixadmin::params::docroot,
-  $ssl              = false,
-  $ssl_cert         = unset,
-  $ssl_key          = unset,
-  $ssl_chain        = unset,
-  $redirect_to_ssl  = true,
-  $create_resources = {},
+  String  $type             = 'apache',
+  String  $servername       = $::fqdn,
+  Array   $serveraliases    = [],
+  String  $docroot          = $postfixadmin::params::docroot,
+  Boolean $ssl              = false,
+  String  $ssl_cert         = unset,
+  String  $ssl_key          = unset,
+  String  $ssl_chain        = unset,
+  Boolean $redirect_to_ssl  = true,
+  Hash    $create_resources = {},
 ) inherits postfixadmin::params {
 
   case $type {

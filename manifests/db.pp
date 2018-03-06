@@ -16,11 +16,11 @@
 #   defaults to 'localhost'
 #
 class postfixadmin::db (
-  $dbpass = 'CHANGEME',
-  $type   = 'mysql',
-  $dbname = 'postfixadmin',
-  $dbuser = 'postfixadmin',
-  $host   = 'localhost',
+  String $dbpass = 'CHANGEME',
+  String $type   = 'mysql',
+  String $dbname = 'postfixadmin',
+  String $dbuser = 'postfixadmin',
+  String $host   = 'localhost',
 ){
 
   case $type {
