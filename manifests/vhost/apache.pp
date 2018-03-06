@@ -4,10 +4,10 @@
 # 
 class postfixadmin::vhost::apache (
   String  $servername      = $postfixadmin::vhost::servername,
-  String  $serveraliases   = $postfixadmin::vhost::serveraliases,
+  Array   $serveraliases   = $postfixadmin::vhost::serveraliases,
   String  $docroot         = $postfixadmin::vhost::docroot,
   Hash    $apache_vhost    = {},
-  String  $ssl             = $postfixadmin::vhost::ssl,
+  Boolean $ssl             = $postfixadmin::vhost::ssl,
   String  $ssl_cert        = $postfixadmin::vhost::ssl_cert,
   String  $ssl_key         = $postfixadmin::vhost::ssl_key,
   String  $ssl_chain       = $postfixadmin::vhost::ssl_chain,

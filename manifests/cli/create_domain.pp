@@ -24,37 +24,37 @@
 #
 #
 define postfixadmin::cli::create_domain (
-  $domain          = $title,
-  $description     = $title,
-  $aliases         = false,
-  $mailboxes       = false,
-  $quota           = false,
-  $maxquota        = false,
-  $default_aliases = true,
+  String  $domain          = $title,
+  String  $description     = $title,
+  Integer $aliases         = -1,
+  Integer $mailboxes       = -1,
+  Integer $quota           = -1,
+  Integer $maxquota        = -1,
+  Boolean $default_aliases = true,
 ){
 
   include ::postfixadmin::cli::params
   $cmd = $postfixadmin::cli::params::cmd
 
-  if $aliases {
+  if $aliases != -1 {
     $_aliases = "--aliases ${aliases}"
   } else {
     $_aliases = ''
   }
 
-  if $mailboxes {
+  if $mailboxes != -1 {
     $_mailboxes = "--mailboxes ${mailboxes}"
   } else {
     $_mailboxes = ''
   }
 
-  if $quota {
+  if $quota != -1 {
     $_quota = "--quota ${quota}"
   } else {
     $_quota = ''
   }
 
-  if $maxquota {
+  if $maxquota != -1 {
     $_maxquota = "--maxquota ${maxquota}"
   } else {
     $_maxquota = ''
