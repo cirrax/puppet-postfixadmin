@@ -1,0 +1,23 @@
+<%- | String $dbpass   = 'CHANGEME',
+      String $type     = 'mysql',
+      String $dbname   = 'postfixadmin',
+      String $dbuser   = 'postfixadmin',
+      String $host     = 'localhost',
+      String $dbport   = '3306',
+      String $basepath = '',
+| -%>
+<?php
+##
+## database access settings in php format
+## 
+## Managed by puppet (module postfixadmin)
+##
+$dbuser='<%= $dbuser %>';
+$dbpass='<%= $dbpass %>';
+$basepath='<%= $basepath %>';
+$dbname='<%= $dbname %>';
+$dbserver='<%= $host %>';
+$dbport='<%= $dbport %>';
+$dbtype='<%= $type %>';
+
+

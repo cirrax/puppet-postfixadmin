@@ -12,11 +12,12 @@ describe 'postfixadmin::db' do
   end
 
   let :default_params do
-     { :type   => 'mysql',
-       :dbname => 'postfixadmin',
-       :dbuser => 'postfixadmin',
-       :dbpass => 'CHANGEME',
-       :host   => 'localhost',
+     { :type         => 'mysql',
+       :dbname       => 'postfixadmin',
+       :dbuser       => 'postfixadmin',
+       :dbpass       => 'CHANGEME',
+       :host         => 'localhost',
+       :dbconfig_inc => '/etc/postfixadmin/dbconfig.inc.php',
      }
   end
 
@@ -33,6 +34,21 @@ describe 'postfixadmin::db' do
     end
 
     it_behaves_like 'postfixadmin::db shared examples'
+    it { is_expected.to contain_file( params[:dbconfig_inc] )
+      .with_owner('root')
+      .with_group('www-data')
+      .with_mode('0640')
+    }
   end
 
+  context 'without dbconfig file' do
+    let :params do
+      default_params.merge(
+        :dbconfig_inc => '',
+      )
+    end
+
+    it_behaves_like 'postfixadmin::db shared examples'
+    it { is_expected.to_not contain_file( '/etc/postfixadmin/dbconfig.inc.php' ) }
+  end
 end

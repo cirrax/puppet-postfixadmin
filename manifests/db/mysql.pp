@@ -10,7 +10,7 @@ class postfixadmin::db::mysql (
     user     => $dbuser,
     password => $dbpass,
     host     => $host,
-    grant    => ['SELECT', 'INSERT', 'UPDATE', 'DELETE'],
+    grant    => ['ALTER', 'CREATE', 'SELECT', 'INSERT', 'UPDATE', 'DELETE'],
   }
 
 }

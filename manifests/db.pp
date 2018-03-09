@@ -11,21 +11,49 @@
 # $dbuser
 #   username to connect to the database.
 #   defaults to: 'postfixadmin'
+# $basepath
+#   basepath for database, defaults to ''
+# $dbport
+#   port to connect to db defaults to '3306' (mysql)
 # $host
 #   host that is allowed to connect
 #   defaults to 'localhost'
+# $dbconfig_inc
+#   where to write the db config.
+#   defaults to '/etc/postfixadmin/dbconfig.inc.php'
+#   if you do not want to write, set it to ''
 #
 class postfixadmin::db (
-  String $dbpass = 'CHANGEME',
-  String $type   = 'mysql',
-  String $dbname = 'postfixadmin',
-  String $dbuser = 'postfixadmin',
-  String $host   = 'localhost',
+  String $dbpass       = 'CHANGEME',
+  String $type         = 'mysql',
+  String $dbname       = 'postfixadmin',
+  String $dbuser       = 'postfixadmin',
+  String $host         = 'localhost',
+  String $basepath     = '',
+  String $dbport       = '3306',
+  String $dbconfig_inc = '/etc/postfixadmin/dbconfig.inc.php',
 ){
 
   case $type {
     'mysql': { include ::postfixadmin::db::mysql }
     default: { fail("Database '${type}' is not supported") }
+  }
+
+  if $dbconfig_inc != '' {
+    file { $dbconfig_inc:
+      owner   => 'root',
+      group   => 'www-data',
+      mode    => '0640',
+      content => epp('postfixadmin/dbconfig.inc.epp', {
+        dbpass   => $dbpass,
+        type     => $type,
+        dbname   => $dbname,
+        dbuser   => $dbuser,
+        host     => $host,
+        basepath => $basepath,
+        dbport   => $dbport,
+      }),
+    }
   }
 }
 
