@@ -12,12 +12,14 @@
 # $superadmin
 #   if set to true the admin is a superadmin with access to all domains
 #   Default to false
-#
+# $send_mail
+#   if true, a mail to $admin is sent with password and url
 #
 define postfixadmin::cli::create_admin (
   String  $admin      = $title,
   String  $password   = '',
   Boolean $superadmin = false,
+  Boolean $send_mail  = false,
 ){
 
   include ::postfixadmin::cli::params
@@ -42,4 +44,12 @@ define postfixadmin::cli::create_admin (
     unless   => "${cmd} admin view ${admin} | grep 'Active: YES' 2>/dev/null",
   }
 
+  if $send_mail {
+    exec {"postfixadmin sending mail to ${admin}":
+      path        => $postfixadmin::cli::params::path,
+      command     => "echo 'youre pw is: ${pw}'| mail -s 'new postfixadmin account' ${admin}",
+      refreshonly => true,
+      subscribe   => Exec["postfixadmin create_admin ${admin}"],
+    }
+  }
 }
