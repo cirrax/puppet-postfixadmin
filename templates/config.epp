@@ -1,7 +1,7 @@
 <%- | Hash $configs
 | -%>
 <?php
-// Managed by puppet (module postfixadmin)
+# Managed by puppet (module postfixadmin)
 
 <% $configs.each | $index, $value | { -%>
 <% if ( $value =~ String ) { -%>
