@@ -1,5 +1,5 @@
 <%- | String $dbpass   = 'CHANGEME',
-      String $type     = 'mysql',
+      String $dbtype   = 'mysql',
       String $dbname   = 'postfixadmin',
       String $dbuser   = 'postfixadmin',
       String $host     = 'localhost',
@@ -18,6 +18,6 @@ $basepath='<%= $basepath %>';
 $dbname='<%= $dbname %>';
 $dbserver='<%= $host %>';
 $dbport='<%= $dbport %>';
-$dbtype='<%= $type %>';
+$dbtype='<%= $dbtype %>';
 
 

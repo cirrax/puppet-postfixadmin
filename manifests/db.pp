@@ -1,7 +1,7 @@
 # Parameters:
 # $dbpass
 #   password to connect to the database.
-# $type
+# $dbtype
 #   database type to use currently only mysql is
 #   supported. 
 #   defaults to 'mysql'
@@ -25,7 +25,7 @@
 #
 class postfixadmin::db (
   String $dbpass       = 'CHANGEME',
-  String $type         = 'mysql',
+  String $dbtype       = 'mysql',
   String $dbname       = 'postfixadmin',
   String $dbuser       = 'postfixadmin',
   String $host         = 'localhost',
@@ -34,9 +34,9 @@ class postfixadmin::db (
   String $dbconfig_inc = '/etc/postfixadmin/dbconfig.inc.php',
 ){
 
-  case $type {
+  case $dbtype {
     'mysql': { include ::postfixadmin::db::mysql }
-    default: { fail("Database '${type}' is not supported") }
+    default: { fail("Database '${dbtype}' is not supported") }
   }
 
   if $dbconfig_inc != '' {
@@ -46,7 +46,7 @@ class postfixadmin::db (
       mode    => '0640',
       content => epp('postfixadmin/dbconfig.inc.epp', {
         dbpass   => $dbpass,
-        type     => $type,
+        dbtype   => $dbtype,
         dbname   => $dbname,
         dbuser   => $dbuser,
         host     => $host,
@@ -56,5 +56,3 @@ class postfixadmin::db (
     }
   }
 }
-
-

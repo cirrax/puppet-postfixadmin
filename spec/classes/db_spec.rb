@@ -12,7 +12,7 @@ describe 'postfixadmin::db' do
   end
 
   let :default_params do
-     { :type         => 'mysql',
+     { :dbtype       => 'mysql',
        :dbname       => 'postfixadmin',
        :dbuser       => 'postfixadmin',
        :dbpass       => 'CHANGEME',
