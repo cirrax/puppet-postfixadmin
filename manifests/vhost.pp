@@ -4,7 +4,7 @@
 #
 # Parameters:
 #
-#  $type
+#  $vhosttype
 #    type of vhost to run. currently only apache supported (default)
 #  $servername
 #    Servername (defaults to $::fqdn)
@@ -45,7 +45,7 @@
 #    }
 #
 class postfixadmin::vhost (
-  String  $type             = 'apache',
+  String  $vhosttype        = 'apache',
   String  $servername       = $::fqdn,
   Array   $serveraliases    = [],
   String  $docroot          = $postfixadmin::params::docroot,
@@ -57,9 +57,9 @@ class postfixadmin::vhost (
   Hash    $create_resources = {},
 ) inherits postfixadmin::params {
 
-  case $type {
+  case $vhosttype {
     'apache': { include ::postfixadmin::vhost::apache }
-    default: { fail("Webserver '${type}' is not supported") }
+    default: { fail("Webserver '${vhosttype}' is not supported") }
   }
 
   $create_resources.each | $res, $vals | {
