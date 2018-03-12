@@ -52,6 +52,7 @@ class postfixadmin::queries::postfix (
     'mysql_virtual_domains_maps',
     'mysql_virtual_mailbox_maps',
     'mysql_virtual_alias_domain_mailbox_maps',
+    'mysql_virtual_domains_no_srs_maps',
   ]
 
   $maps.each | $mapname | {
