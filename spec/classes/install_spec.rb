@@ -5,7 +5,7 @@ describe 'postfixadmin::install' do
   let :default_params do
       {  :package_name   => 'postfixadmin',
          :package_ensure => 'installed',
-
+	 :packages       => [],
       }
   end
 
@@ -34,6 +34,21 @@ describe 'postfixadmin::install' do
       )
     end
     it_behaves_like 'postfixadmin::install shared examples'
+  end
+
+  context 'with additional packages' do
+    let :params do
+      default_params.merge(
+         :packages       => ['somepackage'],
+         :package_ensure => 'present',
+      )
+    end
+    it_behaves_like 'postfixadmin::install shared examples'
+
+    it { is_expected.to contain_package( 'somepackage' )
+     .with_tag( 'postfixadmin-packages' )
+     .with_ensure( params[:package_ensure] )
+    }
   end
 
 end
