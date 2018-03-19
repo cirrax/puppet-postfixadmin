@@ -59,6 +59,11 @@ describe 'postfixadmin::queries::postfix' do
       .with_group( params[:group] )
       .with_mode( params[:mode] )
     }
+    it { is_expected.to contain_file( params[:dir] + '/mysql_sender_access.cf')
+      .with_owner( params[:owner] )
+      .with_group( params[:group] )
+      .with_mode( params[:mode] )
+    }
   end
 
   context 'with defaults' do
@@ -103,6 +108,12 @@ describe 'postfixadmin::queries::postfix' do
       .with_content(/^hosts    = localhost$/)
     }
     it { is_expected.to contain_file( params[:dir] + '/mysql_virtual_alias_domain_mailbox_maps.cf')
+      .with_content(/^dbname   = postfixadmin$/)
+      .with_content(/^user     = postfixadmin$/)
+      .with_content(/^password = CHANGEME$/)
+      .with_content(/^hosts    = localhost$/)
+    }
+    it { is_expected.to contain_file( params[:dir] + '/mysql_sender_access.cf')
       .with_content(/^dbname   = postfixadmin$/)
       .with_content(/^user     = postfixadmin$/)
       .with_content(/^password = CHANGEME$/)
@@ -169,6 +180,12 @@ describe 'postfixadmin::queries::postfix' do
       .with_content(/^hosts    = myhost$/)
     }
     it { is_expected.to contain_file( params[:dir] + '/mysql_virtual_alias_domain_mailbox_maps.cf')
+      .with_content(/^dbname   = mydb$/)
+      .with_content(/^user     = myuser$/)
+      .with_content(/^password = secret-password$/)
+      .with_content(/^hosts    = myhost$/)
+    }
+    it { is_expected.to contain_file( params[:dir] + '/mysql_sender_access.cf')
       .with_content(/^dbname   = mydb$/)
       .with_content(/^user     = myuser$/)
       .with_content(/^password = secret-password$/)
