@@ -60,4 +60,7 @@ user_query = SELECT \
 	       WHERE username = '%u' \
 	         AND active   = '1'
 
+# Query to get a list of all usernames.
+iterate_query = SELECT username AS user FROM mailbox WHERE active='1'
+
 #END /etc/dovecot/dovecot-sql.conf
