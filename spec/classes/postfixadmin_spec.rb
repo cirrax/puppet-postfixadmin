@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'postfixadmin' do
-
+  let(:pre_condition) { ['include mysql::params'] }
   let :facts do
     {
       :operatingsystemrelease => 'test',
@@ -19,6 +19,8 @@ describe 'postfixadmin' do
         :ensure_dovecot_queries => false,
         :admins          => {},
         :domains         => {},
+        :dovecot_classes => [],
+        :postfix_classes => [],
       }
   end
 

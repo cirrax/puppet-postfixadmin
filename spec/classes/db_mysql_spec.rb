@@ -2,6 +2,7 @@ require 'spec_helper'
 
 
 describe 'postfixadmin::db::mysql' do
+  let(:pre_condition) { ['include mysql::params'] }
   let :facts do
     {
       :operatingsystemrelease => 'test',
