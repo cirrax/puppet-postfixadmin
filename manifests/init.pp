@@ -45,7 +45,7 @@ class postfixadmin (
 
 
   if $ensure_database {
-    Class['postfixadmin::install'] -> Class['postfixadmin::db'] 
+    Class['postfixadmin::install'] -> Class['postfixadmin::db']
     -> Postfixadmin::Cli::Create_admin <| |>
     include ::postfixadmin::db
   }
