@@ -31,7 +31,7 @@
 # $default_password_scheme
 #   change to match your Postfixadmin setting.
 #   depends on your $CONF['encrypt'] setting
-#   defautls to 'MD5-CRYPT'
+#   defaults to 'MD5-CRYPT'
 # $mboxpath
 #   path to the mbailboxes
 # $uid
