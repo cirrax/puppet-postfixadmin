@@ -71,6 +71,6 @@ define postfixadmin::cli::create_domain (
   exec {"postfixadmin create_domain ${domain}":
     path    => $postfixadmin::cli::params::path,
     command => "${cmd} domain add ${domain} ${options}|grep 'has been added'",
-    unless  => "${cmd} domain view ${domain}|grep 'Active: YES'",
+    unless  => "${cmd} domain view ${domain}|grep 'Last modified: '",
   }
 }
