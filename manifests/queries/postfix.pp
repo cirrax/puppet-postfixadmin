@@ -25,16 +25,24 @@
 # $map_mode
 #   mode of the map files 
 #   defaults to $postfixadmin::params::map_mode,
+# $allow_account_as_sender
+#   used for mysql_sender_access if set to true
+#   add the account as a permitted sender address. 
+#   this allows to create send only accounts which do not
+#   receive any mails (eg. sender address is aliased to another
+#   mailbox). Accounts needs to be formated as email adresses for
+#   this to work !
 #
 class postfixadmin::queries::postfix (
-  String $dbpass    = 'CHANGEME',
-  String $dbuser    = 'postfixadmin',
-  String $dbname    = 'postfixadmin',
-  Array  $hosts     = [ 'localhost' ],
-  String $dir   = $postfixadmin::params::map_dir,
-  String $owner = $postfixadmin::params::map_owner,
-  String $group = $postfixadmin::params::map_group,
-  String $mode  = $postfixadmin::params::map_mode,
+  String  $dbpass                  = 'CHANGEME',
+  String  $dbuser                  = 'postfixadmin',
+  String  $dbname                  = 'postfixadmin',
+  Array   $hosts                   = [ 'localhost' ],
+  String  $dir                     = $postfixadmin::params::map_dir,
+  String  $owner                   = $postfixadmin::params::map_owner,
+  String  $group                   = $postfixadmin::params::map_group,
+  String  $mode                    = $postfixadmin::params::map_mode,
+  Boolean $allow_account_as_sender = false,
 ) inherits postfixadmin::params {
 
   file{ $dir:

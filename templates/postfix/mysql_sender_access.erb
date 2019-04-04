@@ -38,7 +38,10 @@ query    = select distinct GROUP_CONCAT( REGEXP_REPLACE(goto, '[+].*@','@') SEPA
             ) as aliasdom
             WHERE  address='%s'
             OR    address like replace('%s', '@', '+%%@')
+<% if @allow_account_as_sender -%>
+            UNION
+            SELECT '%s' as goto
+<% end -%>
           ) as a 
           GROUP by 'all'
-
 
