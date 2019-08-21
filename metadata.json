@@ -1,6 +1,6 @@
 {
   "name": "cirrax-postfixadmin",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "author": "Cirrax GmbH",
   "summary": "A module to configure postfixadmin",
   "license": "GPL-3.0",
