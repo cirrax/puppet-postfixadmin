@@ -19,53 +19,59 @@ describe 'postfixadmin::cli::create_admin' do
     }
   end
 
-  context 'with defaults' do
-    let(:title) { 'mytitle' }
-    let :params do
-      default_params
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
+
+      context 'with defaults' do
+        let(:title) { 'mytitle' }
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin::cli::create_admin shared examples'
+
+        it {
+          is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+            .with_command(%r{ mytitle })
+            .without_command(%r{--superadmin})
+            .with_unless(%r{ mytitle|})
+        }
+      end
+
+      context 'with non defaults' do
+        let(:title) { 'mytitle' }
+        let :params do
+          default_params.merge(
+            admin: 'someotheradmin',
+            password: 'secret',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::cli::create_admin shared examples'
+        it {
+          is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+            .with_command(%r{ someotheradmin })
+            .with_command(%r{ --password secret --password2 secret})
+            .with_unless(%r{ someotheradmin|})
+        }
+      end
+
+      context 'with superadmin' do
+        let(:title) { 'mytitle' }
+        let :params do
+          default_params.merge(
+            superadmin: true,
+          )
+        end
+
+        it_behaves_like 'postfixadmin::cli::create_admin shared examples'
+
+        it {
+          is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+            .with_command(%r{--superadmin})
+        }
+      end
     end
-
-    it_behaves_like 'postfixadmin::cli::create_admin shared examples'
-
-    it {
-      is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
-        .with_command(%r{ mytitle })
-        .without_command(%r{--superadmin})
-        .with_unless(%r{ mytitle|})
-    }
-  end
-
-  context 'with non defaults' do
-    let(:title) { 'mytitle' }
-    let :params do
-      default_params.merge(
-        admin: 'someotheradmin',
-        password: 'secret',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::cli::create_admin shared examples'
-    it {
-      is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
-        .with_command(%r{ someotheradmin })
-        .with_command(%r{ --password secret --password2 secret})
-        .with_unless(%r{ someotheradmin|})
-    }
-  end
-
-  context 'with superadmin' do
-    let(:title) { 'mytitle' }
-    let :params do
-      default_params.merge(
-        superadmin: true,
-      )
-    end
-
-    it_behaves_like 'postfixadmin::cli::create_admin shared examples'
-
-    it {
-      is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
-        .with_command(%r{--superadmin})
-    }
   end
 end

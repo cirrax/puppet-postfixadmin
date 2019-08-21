@@ -43,67 +43,72 @@ describe 'postfixadmin::queries::dovecot' do
         .with_mode(params[:mode])
     }
   end
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
 
-  context 'with defaults' do
-    let :params do
-      default_params
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin::queries::dovecot shared examples'
+
+        it {
+          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
+            .with_content(%r{dbname=postfixadmin})
+            .with_content(%r{user=postfixadmin})
+            .with_content(%r{password=CHANGEME})
+            .with_content(%r{host=localhost})
+        }
+        it {
+          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
+            .with_content(%r{dbname=postfixadmin})
+            .with_content(%r{user=postfixadmin})
+            .with_content(%r{password=CHANGEME})
+            .with_content(%r{host=localhost})
+        }
+      end
+
+      context 'with non dir+permissions' do
+        let :params do
+          default_params.merge(
+            dir: '/tmp',
+            owner: 'someone',
+            group: 'somegroup',
+            mode: '4242',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::queries::dovecot shared examples'
+      end
+
+      context 'with non defaults DB' do
+        let :params do
+          default_params.merge(
+            dbname: 'mydb',
+            dbuser: 'myuser',
+            dbpass: 'secret-password',
+            host: 'myhost',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::queries::dovecot shared examples'
+        it {
+          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
+            .with_content(%r{dbname=mydb})
+            .with_content(%r{user=myuser})
+            .with_content(%r{password=secret-password})
+            .with_content(%r{host=myhost})
+        }
+        it {
+          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
+            .with_content(%r{dbname=mydb})
+            .with_content(%r{user=myuser})
+            .with_content(%r{password=secret-password})
+            .with_content(%r{host=myhost})
+        }
+      end
     end
-
-    it_behaves_like 'postfixadmin::queries::dovecot shared examples'
-
-    it {
-      is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
-        .with_content(%r{dbname=postfixadmin})
-        .with_content(%r{user=postfixadmin})
-        .with_content(%r{password=CHANGEME})
-        .with_content(%r{host=localhost})
-    }
-    it {
-      is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
-        .with_content(%r{dbname=postfixadmin})
-        .with_content(%r{user=postfixadmin})
-        .with_content(%r{password=CHANGEME})
-        .with_content(%r{host=localhost})
-    }
-  end
-
-  context 'with non dir+permissions' do
-    let :params do
-      default_params.merge(
-        dir: '/tmp',
-        owner: 'someone',
-        group: 'somegroup',
-        mode: '4242',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::queries::dovecot shared examples'
-  end
-
-  context 'with non defaults DB' do
-    let :params do
-      default_params.merge(
-        dbname: 'mydb',
-        dbuser: 'myuser',
-        dbpass: 'secret-password',
-        host: 'myhost',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::queries::dovecot shared examples'
-    it {
-      is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
-        .with_content(%r{dbname=mydb})
-        .with_content(%r{user=myuser})
-        .with_content(%r{password=secret-password})
-        .with_content(%r{host=myhost})
-    }
-    it {
-      is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
-        .with_content(%r{dbname=mydb})
-        .with_content(%r{user=myuser})
-        .with_content(%r{password=secret-password})
-        .with_content(%r{host=myhost})
-    }
   end
 end

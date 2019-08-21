@@ -2,14 +2,6 @@ require 'spec_helper'
 
 describe 'postfixadmin::db::mysql' do
   let(:pre_condition) { ['include mysql::params'] }
-  let :facts do
-    {
-      operatingsystemrelease: 'test',
-      osfamily: 'Debian',
-      operatingsystem: 'Debian',
-      lsbdistcodename: 'Debian',
-    }
-  end
 
   let :default_params do
     { dbname: 'postfixadmin',
@@ -28,24 +20,30 @@ describe 'postfixadmin::db::mysql' do
     }
   end
 
-  context 'with defaults' do
-    let :params do
-      default_params
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
+
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin::db::mysql shared examples'
+      end
+
+      context 'with non  defaults' do
+        let :params do
+          default_params.merge(
+            dbname: 'mydb',
+            dbuser: 'myuser',
+            dbpass: 'secret-password',
+            host: 'myhost',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::db::mysql shared examples'
+      end
     end
-
-    it_behaves_like 'postfixadmin::db::mysql shared examples'
-  end
-
-  context 'with non  defaults' do
-    let :params do
-      default_params.merge(
-        dbname: 'mydb',
-        dbuser: 'myuser',
-        dbpass: 'secret-password',
-        host: 'myhost',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::db::mysql shared examples'
   end
 end

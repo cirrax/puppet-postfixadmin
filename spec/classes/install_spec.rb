@@ -17,39 +17,45 @@ describe 'postfixadmin::install' do
     }
   end
 
-  context 'with defaults' do
-    let :params do
-      default_params
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
+
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin::install shared examples'
+      end
+
+      context 'with non defaults' do
+        let :params do
+          default_params.merge(
+            package_name: 'somepackage',
+            package_ensure: 'present',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::install shared examples'
+      end
+
+      context 'with additional packages' do
+        let :params do
+          default_params.merge(
+            packages: ['somepackage'],
+            package_ensure: 'present',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::install shared examples'
+
+        it {
+          is_expected.to contain_package('somepackage')
+            .with_tag('postfixadmin-packages')
+            .with_ensure(params[:package_ensure])
+        }
+      end
     end
-
-    it_behaves_like 'postfixadmin::install shared examples'
-  end
-
-  context 'with non defaults' do
-    let :params do
-      default_params.merge(
-        package_name: 'somepackage',
-        package_ensure: 'present',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::install shared examples'
-  end
-
-  context 'with additional packages' do
-    let :params do
-      default_params.merge(
-        packages: ['somepackage'],
-        package_ensure: 'present',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::install shared examples'
-
-    it {
-      is_expected.to contain_package('somepackage')
-        .with_tag('postfixadmin-packages')
-        .with_ensure(params[:package_ensure])
-    }
   end
 end

@@ -3,14 +3,6 @@ require 'spec_helper'
 
 describe 'postfixadmin' do
   let(:pre_condition) { ['include mysql::params'] }
-  let :facts do
-    {
-      operatingsystemrelease: 'test',
-      osfamily: 'Debian',
-      operatingsystem: 'Debian',
-      lsbdistcodename: 'Debian',
-    }
-  end
 
   let :default_params do
     { ensure_database: false,
@@ -30,67 +22,73 @@ describe 'postfixadmin' do
     it { is_expected.to contain_class('postfixadmin::config') }
   end
 
-  context 'with defaults' do
-    let :params do
-      default_params
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
+
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin shared examples'
+
+        it { is_expected.not_to contain_class('postfixadmin::db') }
+        it { is_expected.not_to contain_class('postfixadmin::vhost') }
+        it { is_expected.not_to contain_class('postfixadmin::queries::postfix') }
+        it { is_expected.not_to contain_class('postfixadmin::queries::dovecot') }
+      end
+
+      context 'with db' do
+        let :params do
+          default_params.merge(ensure_database: true)
+        end
+
+        it_behaves_like 'postfixadmin shared examples'
+
+        it { is_expected.to contain_class('postfixadmin::db') }
+        it { is_expected.not_to contain_class('postfixadmin::vhost') }
+        it { is_expected.not_to contain_class('postfixadmin::queries::postfix') }
+        it { is_expected.not_to contain_class('postfixadmin::queries::dovecot') }
+      end
+
+      # context 'with vhost' do
+      #   let :params do
+      #     default_params.merge( :ensure_vhost => true )
+      #   end
+      #   it_behaves_like 'postfixadmin shared examples'
+
+      #   it { is_expected.to_not contain_class('postfixadmin::db') }
+      #   it { is_expected.to contain_class('postfixadmin::vhost') }
+      #   it { is_expected.to_not contain_class('postfixadmin::queries::postfix') }
+      #   it { is_expected.to_not contain_class('postfixadmin::queries::dovecot') }
+      # end
+
+      context 'with postfix queries' do
+        let :params do
+          default_params.merge(ensure_postfix_queries: true)
+        end
+
+        it_behaves_like 'postfixadmin shared examples'
+
+        it { is_expected.not_to contain_class('postfixadmin::db') }
+        it { is_expected.not_to contain_class('postfixadmin::vhost') }
+        it { is_expected.to contain_class('postfixadmin::queries::postfix') }
+        it { is_expected.not_to contain_class('postfixadmin::queries::dovecot') }
+      end
+
+      context 'with dovecot queries' do
+        let :params do
+          default_params.merge(ensure_dovecot_queries: true)
+        end
+
+        it_behaves_like 'postfixadmin shared examples'
+
+        it { is_expected.not_to contain_class('postfixadmin::db') }
+        it { is_expected.not_to contain_class('postfixadmin::vhost') }
+        it { is_expected.not_to contain_class('postfixadmin::queries::postfix') }
+        it { is_expected.to contain_class('postfixadmin::queries::dovecot') }
+      end
     end
-
-    it_behaves_like 'postfixadmin shared examples'
-
-    it { is_expected.not_to contain_class('postfixadmin::db') }
-    it { is_expected.not_to contain_class('postfixadmin::vhost') }
-    it { is_expected.not_to contain_class('postfixadmin::queries::postfix') }
-    it { is_expected.not_to contain_class('postfixadmin::queries::dovecot') }
-  end
-
-  context 'with db' do
-    let :params do
-      default_params.merge(ensure_database: true)
-    end
-
-    it_behaves_like 'postfixadmin shared examples'
-
-    it { is_expected.to contain_class('postfixadmin::db') }
-    it { is_expected.not_to contain_class('postfixadmin::vhost') }
-    it { is_expected.not_to contain_class('postfixadmin::queries::postfix') }
-    it { is_expected.not_to contain_class('postfixadmin::queries::dovecot') }
-  end
-
-  # context 'with vhost' do
-  #   let :params do
-  #     default_params.merge( :ensure_vhost => true )
-  #   end
-  #   it_behaves_like 'postfixadmin shared examples'
-
-  #   it { is_expected.to_not contain_class('postfixadmin::db') }
-  #   it { is_expected.to contain_class('postfixadmin::vhost') }
-  #   it { is_expected.to_not contain_class('postfixadmin::queries::postfix') }
-  #   it { is_expected.to_not contain_class('postfixadmin::queries::dovecot') }
-  # end
-
-  context 'with postfix queries' do
-    let :params do
-      default_params.merge(ensure_postfix_queries: true)
-    end
-
-    it_behaves_like 'postfixadmin shared examples'
-
-    it { is_expected.not_to contain_class('postfixadmin::db') }
-    it { is_expected.not_to contain_class('postfixadmin::vhost') }
-    it { is_expected.to contain_class('postfixadmin::queries::postfix') }
-    it { is_expected.not_to contain_class('postfixadmin::queries::dovecot') }
-  end
-
-  context 'with dovecot queries' do
-    let :params do
-      default_params.merge(ensure_dovecot_queries: true)
-    end
-
-    it_behaves_like 'postfixadmin shared examples'
-
-    it { is_expected.not_to contain_class('postfixadmin::db') }
-    it { is_expected.not_to contain_class('postfixadmin::vhost') }
-    it { is_expected.not_to contain_class('postfixadmin::queries::postfix') }
-    it { is_expected.to contain_class('postfixadmin::queries::dovecot') }
   end
 end

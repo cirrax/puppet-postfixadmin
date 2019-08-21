@@ -2,14 +2,6 @@ require 'spec_helper'
 
 describe 'postfixadmin::db' do
   let(:pre_condition) { ['include mysql::params'] }
-  let :facts do
-    {
-      operatingsystemrelease: 'test',
-      osfamily: 'Debian',
-      operatingsystem: 'Debian',
-      lsbdistcodename: 'Debian',
-    }
-  end
 
   let :default_params do
     { dbtype: 'mysql',
@@ -27,29 +19,34 @@ describe 'postfixadmin::db' do
       is_expected.to contain_class('postfixadmin::db::mysql')
     }
   end
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
 
-  context 'with defaults' do
-    let :params do
-      default_params
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin::db shared examples'
+        it {
+          is_expected.to contain_file(params[:dbconfig_inc])
+            .with_owner('root')
+            .with_group('www-data')
+            .with_mode('0640')
+        }
+      end
+
+      context 'without dbconfig file' do
+        let :params do
+          default_params.merge(
+            dbconfig_inc: '',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::db shared examples'
+        it { is_expected.not_to contain_file('/etc/postfixadmin/dbconfig.inc.php') }
+      end
     end
-
-    it_behaves_like 'postfixadmin::db shared examples'
-    it {
-      is_expected.to contain_file(params[:dbconfig_inc])
-        .with_owner('root')
-        .with_group('www-data')
-        .with_mode('0640')
-    }
-  end
-
-  context 'without dbconfig file' do
-    let :params do
-      default_params.merge(
-        dbconfig_inc: '',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::db shared examples'
-    it { is_expected.not_to contain_file('/etc/postfixadmin/dbconfig.inc.php') }
   end
 end

@@ -19,25 +19,30 @@ describe 'postfixadmin::config' do
         .with_mode(params[:mode])
     }
   end
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
 
-  context 'with defaults' do
-    let :params do
-      default_params
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'postfixadmin::config shared examples'
+      end
+
+      context 'with non defaults' do
+        let :params do
+          default_params.merge(
+            config_file: '/tmp/test',
+            owner: 'someone',
+            group: 'somegroup',
+            mode: '4242',
+          )
+        end
+
+        it_behaves_like 'postfixadmin::config shared examples'
+      end
     end
-
-    it_behaves_like 'postfixadmin::config shared examples'
-  end
-
-  context 'with non defaults' do
-    let :params do
-      default_params.merge(
-        config_file: '/tmp/test',
-        owner: 'someone',
-        group: 'somegroup',
-        mode: '4242',
-      )
-    end
-
-    it_behaves_like 'postfixadmin::config shared examples'
   end
 end
