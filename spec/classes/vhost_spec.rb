@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe 'postfixadmin::vhost' do
   let :pre_condition do
     'class { "apache": mpm_module => "prefork" }'
@@ -8,13 +7,12 @@ describe 'postfixadmin::vhost' do
 
   let :facts do
     {
-      :operatingsystemrelease => 'test',
-      :osfamily               => 'Debian',
-      :operatingsystem        => 'Debian',
-      :lsbdistcodename        => 'Debian',
+      operatingsystemrelease: 'test',
+      osfamily: 'Debian',
+      operatingsystem: 'Debian',
+      lsbdistcodename: 'Debian',
     }
   end
 
   it { is_expected.to compile.with_all_deps }
 end
-

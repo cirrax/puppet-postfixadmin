@@ -1,4 +1,4 @@
-
+#
 class postfixadmin::db::mysql (
   $dbname = $postfixadmin::db::dbname,
   $dbuser = $postfixadmin::db::dbuser,

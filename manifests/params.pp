@@ -1,4 +1,4 @@
-
+#
 class postfixadmin::params{
 
   $package_name = 'postfixadmin'
