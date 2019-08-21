@@ -2,16 +2,26 @@
   "name": "cirrax-postfixadmin",
   "version": "1.2.4",
   "author": "Cirrax GmbH",
-  "license": "GPL-3.0",
   "summary": "A module to configure postfixadmin",
+  "license": "GPL-3.0",
   "source": "https://github.com/cirrax/puppet-postfixadmin",
   "project_page": "https://github.com/cirrax/puppet-postfixadmin",
   "issues_url": "https://github.com/cirrax/puppet-postfixadmin/issues",
-  "tags": [
-    "postfixadmin",
-    "postfix",
-    "mail",
-    "mta"
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 3.2.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs/concat",
+      "version_requirement": ">= 2.0.0 < 6.0.0"
+    },
+    {
+      "name": "puppetlabs/apache"
+    },
+    {
+      "name": "puppetlabs/mysql"
+    }
   ],
   "operatingsystem_support": [
     {
@@ -31,20 +41,13 @@
       "version_requirement": ">=4.0.0 < 7.0.0"
     }
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 3.2.0 < 6.0.0"
-    },
-    {
-      "name": "puppetlabs/concat",
-      "version_requirement": ">= 2.0.0 < 6.0.0"
-    },
-    {
-      "name": "puppetlabs/apache"
-    },
-    {
-      "name": "puppetlabs/mysql"
-    }
-  ]
+  "tags": [
+    "postfixadmin",
+    "postfix",
+    "mail",
+    "mta"
+  ],
+  "pdk-version": "1.12.0",
+  "template-url": "pdk-default#1.12.0",
+  "template-ref": "1.12.0-0-g55d9ae2"
 }
