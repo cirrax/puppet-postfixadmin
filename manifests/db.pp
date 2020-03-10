@@ -36,6 +36,7 @@ class postfixadmin::db (
 
   case $dbtype {
     'mysql': { include ::postfixadmin::db::mysql }
+    'mysqli': { include ::postfixadmin::db::mysqli }
     default: { fail("Database '${dbtype}' is not supported") }
   }
 
