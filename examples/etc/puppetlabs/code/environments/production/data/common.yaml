@@ -1,0 +1,27 @@
+---
+
+postfixadmin::db::dbtype: 'mysqli'
+postfixadmin::db::dbpass: 'adminpostfix'
+
+postfixadmin::vhost::apache::servername: '10.11.12.100'
+
+postfixadmin::vhost::ssl: false
+# postfixadmin::vhost::docroot: '/usr/share/postfixadmin/public'
+# fixed
+
+postfixadmin::ensure_database: true
+postfixadmin::ensure_vhost: true
+postfixadmin::ensure_maps: true
+postfixadmin::admins:
+    admin@rvmgroup.it:
+        admin: 'admin@rvmgroup.it'
+        password: 'P0stf1x'
+        superadmin: true
+        #send_mail: true
+		# does not work, nedd a mailer installed
+
+postfixadmin::domains: 
+    croalliance.com:
+        domain: 'croalliance.com'
+
+apache::mpm_module: 'prefork'
