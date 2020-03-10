@@ -4,9 +4,8 @@
 # @param dbpass
 #  password to connect to the database.
 # @param dbtype
-#  database type to use currently only mysql is
-#  supported. 
-#  defaults to 'mysql'
+#  database type to use currently mysql or mysqli
+#  is supported.
 # @param dbname
 #  name of the database
 #  defaults to: 'postfixadmin'
@@ -38,6 +37,7 @@ class postfixadmin::db (
 
   case $dbtype {
     'mysql': { include ::postfixadmin::db::mysql }
+    'mysqli': { include ::postfixadmin::db::mysql }
     default: { fail("Database '${dbtype}' is not supported") }
   }
 
