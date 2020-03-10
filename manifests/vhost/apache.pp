@@ -17,17 +17,32 @@ class postfixadmin::vhost::apache (
   include ::apache
   include ::apache::mod::php
 
-  $vhost = {
-    $servername => {
-      'serveraliases' => $serveraliases,
-      'docroot'       => $docroot,
-      'ssl'           => $ssl,
-      'ssl_cert'      => $ssl_cert,
-      'ssl_key'       => $ssl_key,
-      'ssl_chain'     => $ssl_chain,
-      'port'          => '443',
-    },
-  }
+  if $ssl  {
+	  $vhost = {
+		$servername => {
+		  'serveraliases' => $serveraliases,
+		  'docroot'       => $docroot,
+		  'ssl'           => $ssl,
+		  'ssl_cert'      => $ssl_cert,
+		  'ssl_key'       => $ssl_key,
+		  'ssl_chain'     => $ssl_chain,
+		  'port'          => '443',
+		},
+	  }
+
+	} else {
+	  $vhost = {
+		$servername => {
+		  'serveraliases' => $serveraliases,
+		  'docroot'       => $docroot,
+		  'ssl'           => $ssl,
+		  'ssl_cert'      => $ssl_cert,
+		  'ssl_key'       => $ssl_key,
+		  'ssl_chain'     => $ssl_chain,
+		  'port'          => '80',
+		},
+	  }
+	}
 
   create_resources('apache::vhost', $vhost, $apache_vhost)
 
