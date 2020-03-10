@@ -6,7 +6,11 @@ class postfixadmin::params{
   $config_owner = 'root'
   $config_group = 'www-data'
   $config_mode  = '0640'
-  $docroot      = '/usr/share/postfixadmin'
+  if $::lsbdistcodename == 'buster' {
+    $docroot      = '/usr/share/postfixadmin/public'
+  } else {
+    $docroot      = '/usr/share/postfixadmin'
+  }
 
   # postfix maps
   $map_dir        = '/etc/postfix/postfixadmin'

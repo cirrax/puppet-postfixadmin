@@ -71,4 +71,14 @@ class postfixadmin (
   create_resources('postfixadmin::cli::create_admin', $admins)
   create_resources('postfixadmin::cli::create_domain', $domains)
   create_resources('postfixadmin::cli::create_aliasdomain', $aliasdomains)
+
+  if $::lsbdistcodename == 'buster' {
+	notice ("Running Debian $::lsbdistcodename, fixind bugs...")
+    file { '/usr/share/postfixadmin/templates_c':
+		ensure	=> directory,
+		owner	=> 'www-data',
+		mode	=> '700',
+	}
+
+  }
 }
