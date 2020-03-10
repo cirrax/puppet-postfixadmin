@@ -25,6 +25,43 @@ Just include the postfixadmin class and add some hiera definitions....
 Details about the configuration possibilities are documented in the classes or in 
 the [REFERENCE](https://github.com/cirrax/puppet-postfixadmin/blob/master/REFERENCE.md) file.
 
+### Examples
+some example hiera configs to configure postfixadmin:
+
+````
+---
+
+postfixadmin::db::dbtype: 'mysqli'
+postfixadmin::db::dbpass: 'adminpostfix'
+
+postfixadmin::vhost::servername: 'postfixadmin.example.com'
+
+# we do not want ssl ;(
+postfixadmin::vhost::ssl: false
+postfixadmin::vhost::port: '80'
+postfixadmin::vhost::docroot: '/usr/share/postfixadmin/public'
+
+postfixadmin::ensure_database: true
+postfixadmin::ensure_vhost: true
+postfixadmin::ensure_postfix_queries: true
+postfixadmin::admins:
+  admin@example.com:
+    admin: 'admin@example.com'
+    password: 'P0stf1x'
+    # must include two digits
+    superadmin: true
+    #send_mail: true
+    # does not work out of the box, needs a mailer installed
+
+postfixadmin::domains: 
+  example.com:
+    domain: 'example.com'
+
+apache::mpm_module: 'prefork'
+# needed by apache
+
+````
+
 ## Manage domains using cli
 
 using postfixadmin::cli::create_admin
@@ -49,4 +86,3 @@ This module is mainly written by [Cirrax GmbH](https://cirrax.com).
 
 See the [list of contributors](https://github.com/cirrax/puppet-postfixadmin/graphs/contributors)
 for a list of all contributors.
-
