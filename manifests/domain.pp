@@ -1,15 +1,14 @@
 #
 # helper define to create domains
 #
-# Parameters:
-# $domain
-#   The domain name defaults to $title
-# $target_domain
-#   if set, an alias domain is created, defaults to ''
-# $cli_parameters
-#   additional parameters for postfixadmin::cli::create_domain
-#   or postfixadmin::cli::create_aliasdomain
-
+# @param domain
+#  The domain name defaults to $title
+# @param target_domain
+#  if set, an alias domain is created, defaults to ''
+# @param cli_parameters
+#  additional parameters for postfixadmin::cli::create_domain
+#  or postfixadmin::cli::create_aliasdomain
+#
 define postfixadmin::domain (
   String $domain         = $title,
   String $target_domain  = '',

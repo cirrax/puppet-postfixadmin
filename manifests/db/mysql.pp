@@ -1,4 +1,12 @@
 #
+# privat class to manage mysql db
+# use postfixadmin::db instead
+#
+# @param dbname
+# @param dbuser
+# @param dbpass
+# @param host
+#
 class postfixadmin::db::mysql (
   $dbname = $postfixadmin::db::dbname,
   $dbuser = $postfixadmin::db::dbuser,

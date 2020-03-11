@@ -1,37 +1,36 @@
 #
 # class to create mysql maps for postfix
 #
-# Parameters:
-# $dbpass
-#   password to connect to the database.
-# $dbuser
-#   username to connect to the database.
-#   defaults to: 'postfixadmin'
-# $dbname
-#   name of the database
-#   defaults to: 'postfixadmin'
-# $hosts
-#   Array of hosts to connect to.
-#   defaults to ['localhost']
-# $map_dir
-#   directory to place the map
-#   defaults to $postfixadmin::params::map_dir
-# $map_owner
-#   owner of the map files
-#   default to $postfixadmin::params::map_owner
-# $map_group
-#   group of the map files
-#   defaults to $postfixadmin::params::map_group
-# $map_mode
-#   mode of the map files 
-#   defaults to $postfixadmin::params::map_mode,
-# $allow_account_as_sender
-#   used for mysql_sender_access if set to true
-#   add the account as a permitted sender address. 
-#   this allows to create send only accounts which do not
-#   receive any mails (eg. sender address is aliased to another
-#   mailbox). Accounts needs to be formated as email adresses for
-#   this to work !
+# @param dbpass
+#  password to connect to the database.
+# @param dbuser
+#  username to connect to the database.
+#  defaults to: 'postfixadmin'
+# @param dbname
+#  name of the database
+#  defaults to: 'postfixadmin'
+# @param hosts
+#  Array of hosts to connect to.
+#  defaults to ['localhost']
+# @param dir
+#  directory to place the map
+#  defaults to $postfixadmin::params::map_dir
+# @param owner
+#  owner of the map files
+#  default to $postfixadmin::params::map_owner
+# @param group
+#  group of the map files
+#  defaults to $postfixadmin::params::map_group
+# @param mode
+#  mode of the map files 
+#  defaults to $postfixadmin::params::map_mode,
+# @param allow_account_as_sender
+#  used for mysql_sender_access if set to true
+#  add the account as a permitted sender address. 
+#  this allows to create send only accounts which do not
+#  receive any mails (eg. sender address is aliased to another
+#  mailbox). Accounts needs to be formated as email adresses for
+#  this to work !
 #
 class postfixadmin::queries::postfix (
   String  $dbpass                  = 'CHANGEME',

@@ -1,10 +1,18 @@
 #
-# Paramters:
-#   $config_file:
-#     configuration file to use
-#   $configs: 
-#     Hash of configuration variables to set.
-#     Defaults to {}
+# class for postfixadmin configuration 
+#
+# @param config_file
+#  configuration file to use
+# @param configs
+#  Hash of configuration variables to set.
+#  Defaults to {}
+# @param owner
+#  configfile owner
+# @param group
+#  configfile group
+# @param mode
+#  configfile mode
+#
 class postfixadmin::config (
   String $config_file = $postfixadmin::params::config_file,
   Hash   $configs     = {},

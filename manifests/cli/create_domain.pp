@@ -2,26 +2,24 @@
 # Ensures, that a domain exists
 # But does not modify any domains
 #
-# Parameters:
-#  $domain      = $title,
-#    The domain defaults to $title
-#  $description = $title,
-#    a description defaults to $title
-#  $aliases     = unset,
-#    amount of Aliases (-1=disable, 0=unlimited)
-#    defaults to false (do not use option)
-#  $mailboxes   = unset,
-#    amount of mailboxes (-1=disable, 0=unlimited)
-#    defaults to false (do not use option)
-#  $quota       = unset,
-#    domain quota (MB | -1 = disable | 0 = unlimited)
-#    defaults to false (do not use option)
-#  $maxquota    = unset,
-#    Mailbox Quota (MB) (MB | -1 = disable | 0 = unlimited)
-#    defaults to false (do not use option)
-# $default_aliases
-#    If true (default) set the default aliases
-#
+# @param domain
+#  The domain defaults to $title
+# @param description
+#  a description defaults to $title
+# @param aliases
+#  amount of Aliases (-1=disable, 0=unlimited)
+#  defaults to false (do not use option)
+# @param mailboxes
+#  amount of mailboxes (-1=disable, 0=unlimited)
+#  defaults to false (do not use option)
+# @param quota
+#  domain quota (MB | -1 = disable | 0 = unlimited)
+#  defaults to false (do not use option)
+# @param maxquota
+#  Mailbox Quota (MB) (MB | -1 = disable | 0 = unlimited)
+#  defaults to false (do not use option)
+# @param default_aliases
+#  If true (default) set the default aliases
 #
 define postfixadmin::cli::create_domain (
   String  $domain          = $title,

@@ -1,4 +1,4 @@
-#
+# Params class, should go away ...
 class postfixadmin::params{
 
   $package_name = 'postfixadmin'

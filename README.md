@@ -22,7 +22,8 @@ It assumes, you are using hiera to configure.
 
 Just include the postfixadmin class and add some hiera definitions....
 
-Details about the configuration possibilities are documented in the classes.
+Details about the configuration possibilities are documented in the classes or in 
+the [REFERENCE](https://github.com/cirrax/puppet-postfixadmin/blob/master/REFERENCE.md) file.
 
 ## Manage domains using cli
 

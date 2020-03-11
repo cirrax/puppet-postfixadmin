@@ -1,16 +1,15 @@
 #
 # define to ensure an aliasdomain exists
 #
-# Parameters:
-#   $target_domain
-#     the domain it points to
-#   $domain
-#     the domain to ensure (defaults to $title)
-#   $create_domain
-#     if true (default) we use postfixadmin::cli::create_domain
-#     to create the domain.
-#     if you set this to false you need to create the domain
-#     before using this define.
+# @param target_domain
+#  the domain it points to
+# @param domain
+#  the domain to ensure (defaults to $title)
+# @param create_domain
+#  if true (default) we use postfixadmin::cli::create_domain
+#  to create the domain.
+#  if you set this to false you need to create the domain
+#  before using this define.
 #
 define postfixadmin::cli::create_aliasdomain (
   String  $target_domain,
