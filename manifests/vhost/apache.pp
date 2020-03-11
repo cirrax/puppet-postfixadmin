@@ -10,6 +10,7 @@
 # @param ssl_cert
 # @param ssl_key
 # @param ssl_chain
+# @param port
 # @param redirect_to_ssl
 # 
 class postfixadmin::vhost::apache (
@@ -21,6 +22,7 @@ class postfixadmin::vhost::apache (
   String  $ssl_cert        = $postfixadmin::vhost::ssl_cert,
   String  $ssl_key         = $postfixadmin::vhost::ssl_key,
   String  $ssl_chain       = $postfixadmin::vhost::ssl_chain,
+  String  $port            = $postfixadmin::vhost::port,
   Boolean $redirect_to_ssl = $postfixadmin::vhost::redirect_to_ssl,
 ) inherits postfixadmin::vhost {
 
@@ -35,7 +37,7 @@ class postfixadmin::vhost::apache (
       'ssl_cert'      => $ssl_cert,
       'ssl_key'       => $ssl_key,
       'ssl_chain'     => $ssl_chain,
-      'port'          => '443',
+      'port'          => $port,
     },
   }
 

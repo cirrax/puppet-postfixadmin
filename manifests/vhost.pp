@@ -20,6 +20,8 @@
 #  ssl key to use
 # @param ssl_chain
 #  ssl chain to use
+# @param port
+#  port to use (default 443)
 # @param redirect_to_ssl
 #  if true, redirects all non https requests to https
 #  defaults to true.
@@ -51,6 +53,7 @@ class postfixadmin::vhost (
   String  $ssl_cert         = unset,
   String  $ssl_key          = unset,
   String  $ssl_chain        = unset,
+  String  $port             = '443',
   Boolean $redirect_to_ssl  = true,
   Hash    $create_resources = {},
 ) inherits postfixadmin::params {
