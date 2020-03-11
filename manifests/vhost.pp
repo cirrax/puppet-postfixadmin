@@ -2,47 +2,45 @@
 # This class chooses the type of vhost 
 # to run webserver
 #
-# Parameters:
-#
-#  $vhosttype
+# @param vhosttype
 #    type of vhost to run. currently only apache supported (default)
-#  $servername
-#    Servername (defaults to $::fqdn)
-#  $serveraliases
-#    Array of Serveraliasess to listen to (default [])
-#  $docroot
-#    Document root
-#    defaults to $postfixadmin::params::docroot
-#  $ssl
-#    If true, use ssl (defaults to false)
-#    If true, you also need to set cert, key and chain.
-#  $ssl_cert
-#    ssl cert to use 
-#  $ssl_key
-#    ssl key to use
-#  $ssl_chain
-#    ssl chain to use
-#  $redirect_to_ssl
-#    if true, redirects all non https requests to https
-#    defaults to true.
-#  $create_resources
-#    a Hash of Hashes to create additional resources eg. to 
-#    retrieve a certificate.
-#    Defaults to {} (do not create any additional resources)
-#    Example (hiera):
+# @param servername
+#  Servername (defaults to $::fqdn)
+# @param serveraliases
+#  Array of Serveraliasess to listen to (default [])
+# @param docroot
+#  Document root
+#  defaults to $postfixadmin::params::docroot
+# @param ssl
+#  If true, use ssl (defaults to false)
+#  If true, you also need to set cert, key and chain.
+# @param ssl_cert
+#  ssl cert to use 
+# @param ssl_key
+#  ssl key to use
+# @param ssl_chain
+#  ssl chain to use
+# @param redirect_to_ssl
+#  if true, redirects all non https requests to https
+#  defaults to true.
+# @param create_resources
+#  a Hash of Hashes to create additional resources eg. to 
+#  retrieve a certificate.
+#  Defaults to {} (do not create any additional resources)
+#  Example (hiera):
 #
-#    postfixadmin::vhost::create_resources:
-#        sslcert::get_cert:
-#            get_my_postfix_cert:
-#              private_key_path: '/etc/postfixadmin/ssl/key.pem'
-#              cert_path: '/etc/postfixadmin/ssl/cert.pem'
+#  postfixadmin::vhost::create_resources:
+#      sslcert::get_cert:
+#          get_my_postfix_cert:
+#            private_key_path: '/etc/postfixadmin/ssl/key.pem'
+#            cert_path: '/etc/postfixadmin/ssl/cert.pem'
 #
-#    Will result in  executing:
+#  Will result in  executing:
 #
-#    sslcert::get_cert{'get_my_postfix_cert':
-#      private_key_path => '/etc/postfixadmin/ssl/key.pem'
-#      cert_path        => '/etc/postfixadmin/ssl/cert.pem'
-#    }
+#  sslcert::get_cert{'get_my_postfix_cert':
+#    private_key_path => '/etc/postfixadmin/ssl/key.pem'
+#    cert_path        => '/etc/postfixadmin/ssl/cert.pem'
+#  }
 #
 class postfixadmin::vhost (
   String  $vhosttype        = 'apache',

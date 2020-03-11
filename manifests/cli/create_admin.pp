@@ -2,18 +2,17 @@
 # This define just ensures that a
 # an admin account exists.
 #
-# Parameters:
-# $admin
-#   the name of the admin account (needs to be an Email)
-#   Defaults to $title
-# $password
-#   The passord to initialy set. If set to '' (the default) an
-#   random password is generated
-# $superadmin
-#   if set to true the admin is a superadmin with access to all domains
-#   Default to false
-# $send_mail
-#   if true, a mail to $admin is sent with password and url
+# @param admin
+#  the name of the admin account (needs to be an Email)
+#  Defaults to $title
+# @param password
+#  The passord to initialy set. If set to '' (the default) an
+#  random password is generated
+# @param superadmin
+#  if set to true the admin is a superadmin with access to all domains
+#  Default to false
+# @param send_mail
+#  if true, a mail to $admin is sent with password and url
 #
 define postfixadmin::cli::create_admin (
   String  $admin      = $title,

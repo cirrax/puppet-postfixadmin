@@ -1,27 +1,29 @@
-# Parameters:
-# $dbpass
-#   password to connect to the database.
-# $dbtype
-#   database type to use currently only mysql is
-#   supported. 
-#   defaults to 'mysql'
-# $dbname
-#   name of the database
-#   defaults to: 'postfixadmin'
-# $dbuser
-#   username to connect to the database.
-#   defaults to: 'postfixadmin'
-# $basepath
-#   basepath for database, defaults to ''
-# $dbport
-#   port to connect to db defaults to '3306' (mysql)
-# $host
-#   host that is allowed to connect
-#   defaults to 'localhost'
-# $dbconfig_inc
-#   where to write the db config.
-#   defaults to '/etc/postfixadmin/dbconfig.inc.php'
-#   if you do not want to write, set it to ''
+#
+# install database
+#
+# @param dbpass
+#  password to connect to the database.
+# @param dbtype
+#  database type to use currently only mysql is
+#  supported. 
+#  defaults to 'mysql'
+# @param dbname
+#  name of the database
+#  defaults to: 'postfixadmin'
+# @param dbuser
+#  username to connect to the database.
+#  defaults to: 'postfixadmin'
+# @param basepath
+#  basepath for database, defaults to ''
+# @param dbport
+#  port to connect to db defaults to '3306' (mysql)
+# @param host
+#  host that is allowed to connect
+#  defaults to 'localhost'
+# @param dbconfig_inc
+#  where to write the db config.
+#  defaults to '/etc/postfixadmin/dbconfig.inc.php'
+#  if you do not want to write, set it to ''
 #
 class postfixadmin::db (
   String $dbpass       = 'CHANGEME',
