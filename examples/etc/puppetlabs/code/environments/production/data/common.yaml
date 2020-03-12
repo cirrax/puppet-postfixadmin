@@ -1,9 +1,10 @@
+
 ---
 
 postfixadmin::db::dbtype: 'mysqli'
 postfixadmin::db::dbpass: 'adminpostfix'
 
-postfixadmin::vhost::apache::servername: '10.11.12.100'
+postfixadmin::vhost::apache::servername: '10.11.12.110'
 
 postfixadmin::vhost::ssl: false
 # postfixadmin::vhost::docroot: '/usr/share/postfixadmin/public'
@@ -11,17 +12,33 @@ postfixadmin::vhost::ssl: false
 
 postfixadmin::ensure_database: true
 postfixadmin::ensure_vhost: true
-postfixadmin::ensure_maps: true
+postfixadmin::ensure_postfix_queries: true
+postfixadmin::ensure_dovecot_queries: true
 postfixadmin::admins:
     admin@rvmgroup.it:
-        admin: 'admin@rvmgroup.it'
+        admin: 'admin@example.com'
         password: 'P0stf1x'
         superadmin: true
         #send_mail: true
-		# does not work, nedd a mailer installed
+        # does not work, nedd a mailer installed
 
 postfixadmin::domains: 
-    croalliance.com:
-        domain: 'croalliance.com'
+    example.com:
+        domain: 'example.com'
+
+postfixadmin::config::configs:
+    domain_path: yes
+    domain_in_mailbox: yes
+    aliases: 0
+    mailboxes: 0
+    maxquota: 0
+    create_mailbox_subdirs_prefix: ''
 
 apache::mpm_module: 'prefork'
+
+
+# Dovecot
+dovecot::install::packages:
+    - 'dovecot-mysql'
+    - 'dovecot-imapd'
+
