@@ -1,4 +1,3 @@
-
 ---
 
 postfixadmin::db::dbtype: 'mysqli'
@@ -12,8 +11,6 @@ postfixadmin::vhost::ssl: false
 
 postfixadmin::ensure_database: true
 postfixadmin::ensure_vhost: true
-postfixadmin::ensure_postfix_queries: true
-postfixadmin::ensure_dovecot_queries: true
 postfixadmin::admins:
     admin@rvmgroup.it:
         admin: 'admin@example.com'
@@ -32,7 +29,17 @@ postfixadmin::config::configs:
     aliases: 0
     mailboxes: 0
     maxquota: 0
-    create_mailbox_subdirs_prefix: ''
+    domain_path: 'yes'
+    domain_in_mailbox: 'yes'
+    create_mailbox_subdirs_prefix: 'yes'
+
+postfixadmin::ensure_postfix_queries: true
+postfixadmin::ensure_dovecot_queries: true
+
+postfixadmin::queries::dovecot::dbpass: "%{::postfixadmin::db::dbpass}"
+
+postfixadmin::queries::postfix::dbpass: "%{::postfixadmin::db::dbpass}"
+
 
 apache::mpm_module: 'prefork'
 
