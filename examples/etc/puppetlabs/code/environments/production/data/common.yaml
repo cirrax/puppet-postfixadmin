@@ -33,6 +33,8 @@ postfixadmin::config::configs:
     domain_in_mailbox: 'yes'
     create_mailbox_subdirs_prefix: 'yes'
 
+
+
 postfixadmin::ensure_postfix_queries: true
 postfixadmin::ensure_dovecot_queries: true
 
@@ -48,4 +50,19 @@ apache::mpm_module: 'prefork'
 dovecot::install::packages:
     - 'dovecot-mysql'
     - 'dovecot-imapd'
+
+postfix::parameters:
+    virtual_uid_maps: 'static:108'
+    virtual_minimum_uid: 108
+    virtual_gid_maps: 'static:116'
+    virtual_transport: virtual
+    virtual_mailbox_base: /home/vmail
+    virtual_alias_maps: mysql:/etc/postfix/mysql_virtual_alias_maps.cf
+    virtual_mailbox_domains: mysql:/etc/postfix/mysql_virtual_domains_maps.cf
+    virtual_mailbox_maps: mysql:/etc/postfix/mysql_virtual_mailbox_maps.cf
+    relay_domains: mysql:/etc/postfix/mysql_relay_domains_maps.cf
+    mydestination: localhost
+    smtpd_sasl_auth_enable: yes
+    smtpd_sasl_type: dovecot
+    smtpd_sasl_path: private/auth
 
