@@ -18,16 +18,12 @@
 #  eg. ssl settings. defaults to []
 # @param dir
 #  directory to place the map
-#  defaults to $postfixadmin::params::map_dir
 # @param owner
 #  owner of the map files
-#  default to $postfixadmin::params::map_owner
 # @param group
 #  group of the map files
-#  defaults to $postfixadmin::params::map_group
 # @param mode
 #  mode of the map files 
-#  defaults to $postfixadmin::params::map_mode,
 # @param default_password_scheme
 #  change to match your Postfixadmin setting.
 #  depends on your $CONF['encrypt'] setting
@@ -52,16 +48,16 @@ class postfixadmin::queries::dovecot (
   String  $dbname                  = 'postfixadmin',
   String  $host                    = 'localhost',
   Array   $mysql_flags             = [],
-  String  $dir                     = $postfixadmin::params::dovecot_dir,
-  String  $owner                   = $postfixadmin::params::dovecot_owner,
-  String  $group                   = $postfixadmin::params::dovecot_group,
-  String  $mode                    = $postfixadmin::params::dovecot_mode,
+  String  $dir                     = '/etc/dovecot/postfixadmin',
+  String  $owner                   = 'root',
+  String  $group                   = 'root',
+  String  $mode                    = '0640',
   String  $default_password_scheme = 'MD5-CRYPT',
   String  $mboxpath                = '',
   String  $uid                     = '',
   String  $gid                     = '',
   Boolean $quota                   = true,
-) inherits postfixadmin::params {
+) {
 
   file{ $dir:
     ensure => 'directory',

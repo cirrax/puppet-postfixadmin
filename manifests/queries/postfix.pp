@@ -14,16 +14,12 @@
 #  defaults to ['localhost']
 # @param dir
 #  directory to place the map
-#  defaults to $postfixadmin::params::map_dir
 # @param owner
 #  owner of the map files
-#  default to $postfixadmin::params::map_owner
 # @param group
 #  group of the map files
-#  defaults to $postfixadmin::params::map_group
 # @param mode
 #  mode of the map files 
-#  defaults to $postfixadmin::params::map_mode,
 # @param allow_account_as_sender
 #  used for mysql_sender_access if set to true
 #  add the account as a permitted sender address. 
@@ -37,12 +33,12 @@ class postfixadmin::queries::postfix (
   String  $dbuser                  = 'postfixadmin',
   String  $dbname                  = 'postfixadmin',
   Array   $hosts                   = [ 'localhost' ],
-  String  $dir                     = $postfixadmin::params::map_dir,
-  String  $owner                   = $postfixadmin::params::map_owner,
-  String  $group                   = $postfixadmin::params::map_group,
-  String  $mode                    = $postfixadmin::params::map_mode,
+  String  $dir                     = '/etc/postfix/postfixadmin',
+  String  $owner                   = 'root',
+  String  $group                   = 'postfix',
+  String  $mode                    = '0640',
   Boolean $allow_account_as_sender = false,
-) inherits postfixadmin::params {
+) {
 
   file{ $dir:
     ensure => 'directory',

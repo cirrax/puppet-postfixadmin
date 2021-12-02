@@ -10,7 +10,6 @@
 #  Array of Serveraliasess to listen to (default [])
 # @param docroot
 #  Document root
-#  defaults to $postfixadmin::params::docroot
 # @param ssl
 #  If true, use ssl (defaults to false)
 #  If true, you also need to set cert, key and chain.
@@ -48,7 +47,7 @@ class postfixadmin::vhost (
   String  $vhosttype        = 'apache',
   String  $servername       = $::fqdn,
   Array   $serveraliases    = [],
-  String  $docroot          = $postfixadmin::params::docroot,
+  String  $docroot          = '/usr/share/postfixadmin',
   Boolean $ssl              = false,
   String  $ssl_cert         = unset,
   String  $ssl_key          = unset,
@@ -56,7 +55,7 @@ class postfixadmin::vhost (
   String  $port             = '443',
   Boolean $redirect_to_ssl  = true,
   Hash    $create_resources = {},
-) inherits postfixadmin::params {
+){
 
   case $vhosttype {
     'apache': { include ::postfixadmin::vhost::apache }

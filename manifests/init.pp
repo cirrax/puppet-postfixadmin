@@ -41,7 +41,7 @@ class postfixadmin (
   Hash    $aliasdomains           = {},
   Array   $dovecot_classes        = ['dovecot'],
   Array   $postfix_classes        = ['postfix'],
-) inherits postfixadmin::params {
+) {
 
   Class['postfixadmin::install'] -> Class['postfixadmin::config']
   -> Postfixadmin::Cli::Create_admin <| |>

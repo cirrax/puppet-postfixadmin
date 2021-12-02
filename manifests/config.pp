@@ -14,12 +14,12 @@
 #  configfile mode
 #
 class postfixadmin::config (
-  String $config_file = $postfixadmin::params::config_file,
+  String $config_file = '/etc/postfixadmin/config.local.php',
   Hash   $configs     = {},
-  String $owner       = $postfixadmin::params::config_owner,
-  String $group       = $postfixadmin::params::config_group,
-  String $mode        = $postfixadmin::params::config_mode,
-) inherits postfixadmin::params {
+  String $owner       = 'root',
+  String $group       = 'www-data',
+  String $mode        = '0640',
+) {
 
   file { $config_file:
     owner   => $owner,

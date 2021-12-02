@@ -8,8 +8,8 @@
 #  the document root
 #
 class postfixadmin::fix_debian_bug (
-  String $docroot = $postfixadmin::params::docroot,
-) inherits postfixadmin::params {
+  String $docroot = '/usr/share/postfixadmin',
+) {
 
   file { "${docroot}/templates_c":
     ensure => 'directory',
