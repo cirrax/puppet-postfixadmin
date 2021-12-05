@@ -25,6 +25,10 @@ Just include the postfixadmin class and add some hiera definitions....
 Details about the configuration possibilities are documented in the classes or in 
 the [REFERENCE](https://github.com/cirrax/puppet-postfixadmin/blob/master/REFERENCE.md) file.
 
+### Remark for Debian bullseye (11)
+Debian bullseye (11) does not ship a package for postfixadmin. You need to backport the version from testing and
+make it available to install.
+
 ### Examples
 some example hiera configs to configure postfixadmin:
 
