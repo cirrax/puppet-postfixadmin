@@ -31,7 +31,7 @@ define postfixadmin::cli::create_admin (
   }
 
   if $superadmin {
-    $_suadmin = '--superadmin'
+    $_suadmin = '--superadmin 1'
   } else {
     $_suadmin = ''
   }
