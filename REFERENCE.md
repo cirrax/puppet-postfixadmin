@@ -233,6 +233,7 @@ The following parameters are available in the `postfixadmin::db` class:
 * [`basepath`](#basepath)
 * [`dbport`](#dbport)
 * [`host`](#host)
+* [`host_config`](#host_config)
 * [`dbconfig_inc`](#dbconfig_inc)
 
 ##### <a name="dbpass"></a>`dbpass`
@@ -290,10 +291,19 @@ Default value: `'3306'`
 
 Data type: `String`
 
-host that is allowed to connect
+host that is allowed to connect for database creation
 defaults to 'localhost'
 
 Default value: `'localhost'`
+
+##### <a name="host_config"></a>`host_config`
+
+Data type: `Optional[String]`
+
+host that is used to connect to database
+defaults to same as host.
+
+Default value: ``undef``
 
 ##### <a name="dbconfig_inc"></a>`dbconfig_inc`
 

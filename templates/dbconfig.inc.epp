@@ -1,10 +1,10 @@
-<%- | String $dbpass   = 'CHANGEME',
-      String $dbtype   = 'mysql',
-      String $dbname   = 'postfixadmin',
-      String $dbuser   = 'postfixadmin',
-      String $host     = 'localhost',
-      String $dbport   = '3306',
-      String $basepath = '',
+<%- | String $dbpass,
+      String $dbtype,
+      String $dbname,
+      String $dbuser,
+      String $host,
+      String $dbport,
+      String $basepath,
 | -%>
 <?php
 ##
@@ -19,5 +19,3 @@ $dbname='<%= $dbname %>';
 $dbserver='<%= $host %>';
 $dbport='<%= $dbport %>';
 $dbtype='<%= $dbtype %>';
-
-
