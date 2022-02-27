@@ -27,7 +27,7 @@
 
 ### Functions
 
-* [`postfixadmin_generate_pw`](#postfixadmin_generate_pw)
+* [`postfixadmin_generate_pw`](#postfixadmin_generate_pw): computes a random password string
 
 ## Classes
 
@@ -1099,11 +1099,11 @@ Default value: `{}`
 
 Type: Ruby 3.x API
 
-The postfixadmin_generate_pw function.
+computes a random password string
 
 #### `postfixadmin_generate_pw()`
 
-The postfixadmin_generate_pw function.
+computes a random password string
 
-Returns: `Any`
+Returns: `String` a random password st
 
