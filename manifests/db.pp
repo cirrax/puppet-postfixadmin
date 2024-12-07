@@ -37,11 +37,10 @@ class postfixadmin::db (
   String           $basepath     = '',
   String           $dbport       = '3306',
   String           $dbconfig_inc = '/etc/postfixadmin/dbconfig.inc.php',
-){
-
+) {
   case $dbtype {
-    'mysql': { include ::postfixadmin::db::mysql }
-    'mysqli': { include ::postfixadmin::db::mysql }
+    'mysql': { include postfixadmin::db::mysql }
+    'mysqli': { include postfixadmin::db::mysql }
     default: { fail("Database '${dbtype}' is not supported") }
   }
 
@@ -51,13 +50,13 @@ class postfixadmin::db (
       group   => 'www-data',
       mode    => '0640',
       content => epp('postfixadmin/dbconfig.inc.epp', {
-        'dbpass'   => $dbpass,
-        'dbtype'   => $dbtype,
-        'dbname'   => $dbname,
-        'dbuser'   => $dbuser,
-        'host'     => pick($host_config, $host),
-        'basepath' => $basepath,
-        'dbport'   => $dbport,
+          'dbpass'   => $dbpass,
+          'dbtype'   => $dbtype,
+          'dbname'   => $dbname,
+          'dbuser'   => $dbuser,
+          'host'     => pick($host_config, $host),
+          'basepath' => $basepath,
+          'dbport'   => $dbport,
       }),
     }
   }

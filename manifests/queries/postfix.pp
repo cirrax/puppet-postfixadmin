@@ -32,15 +32,14 @@ class postfixadmin::queries::postfix (
   String  $dbpass                  = 'CHANGEME',
   String  $dbuser                  = 'postfixadmin',
   String  $dbname                  = 'postfixadmin',
-  Array   $hosts                   = [ 'localhost' ],
+  Array   $hosts                   = ['localhost'],
   String  $dir                     = '/etc/postfix/postfixadmin',
   String  $owner                   = 'root',
   String  $group                   = 'postfix',
   String  $mode                    = '0640',
   Boolean $allow_account_as_sender = false,
 ) {
-
-  file{ $dir:
+  file { $dir:
     ensure => 'directory',
     owner  => $owner,
     group  => $group,
@@ -60,7 +59,7 @@ class postfixadmin::queries::postfix (
   ]
 
   $maps.each | $mapname | {
-    file{ "${dir}/${mapname}.cf":
+    file { "${dir}/${mapname}.cf":
       owner   => $owner,
       group   => $group,
       mode    => $mode,

@@ -42,36 +42,34 @@ class postfixadmin (
   Array   $dovecot_classes        = ['dovecot'],
   Array   $postfix_classes        = ['postfix'],
 ) {
-
   Class['postfixadmin::install'] -> Class['postfixadmin::config']
   -> Postfixadmin::Cli::Create_admin <| |>
   -> Postfixadmin::Cli::Create_domain <| |>
   -> Postfixadmin::Cli::Create_aliasdomain <| |>
 
-
   if $ensure_database {
     Class['postfixadmin::install'] -> Class['postfixadmin::db']
     -> Postfixadmin::Cli::Create_admin <| |>
-    include ::postfixadmin::db
+    include postfixadmin::db
   }
 
   if $ensure_vhost {
     Class['postfixadmin::config'] -> Class['postfixadmin::vhost']
-    include ::postfixadmin::vhost
+    include postfixadmin::vhost
   }
 
   if $ensure_postfix_queries {
     Class[$postfix_classes] -> Class['postfixadmin::queries::postfix']
-    include ::postfixadmin::queries::postfix
+    include postfixadmin::queries::postfix
   }
 
   if $ensure_dovecot_queries {
     Class[$dovecot_classes] -> Class['postfixadmin::queries::dovecot']
-    include ::postfixadmin::queries::dovecot
+    include postfixadmin::queries::dovecot
   }
 
-  include ::postfixadmin::install
-  include ::postfixadmin::config
+  include postfixadmin::install
+  include postfixadmin::config
 
   create_resources('postfixadmin::cli::create_admin', $admins)
   create_resources('postfixadmin::cli::create_domain', $domains)

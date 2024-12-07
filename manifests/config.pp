@@ -20,11 +20,10 @@ class postfixadmin::config (
   String $group       = 'www-data',
   String $mode        = '0640',
 ) {
-
   file { $config_file:
     owner   => $owner,
     group   => $group,
     mode    => $mode,
-    content => epp('postfixadmin/config.epp',{ configs => $configs }),
+    content => epp('postfixadmin/config.epp', { configs => $configs }),
   }
 }

@@ -10,7 +10,6 @@
 class postfixadmin::fix_debian_bug (
   String $docroot = '/usr/share/postfixadmin',
 ) {
-
   file { "${docroot}/templates_c":
     ensure => 'directory',
     owner  => 'root',

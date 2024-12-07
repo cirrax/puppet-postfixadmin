@@ -45,7 +45,7 @@
 #
 class postfixadmin::vhost (
   String  $vhosttype        = 'apache',
-  String  $servername       = $::fqdn,
+  String  $servername       = $facts['networking']['fqdn'],
   Array   $serveraliases    = [],
   String  $docroot          = '/usr/share/postfixadmin',
   Boolean $ssl              = false,
@@ -55,10 +55,9 @@ class postfixadmin::vhost (
   String  $port             = '443',
   Boolean $redirect_to_ssl  = true,
   Hash    $create_resources = {},
-){
-
+) {
   case $vhosttype {
-    'apache': { include ::postfixadmin::vhost::apache }
+    'apache': { include postfixadmin::vhost::apache }
     default: { fail("Webserver '${vhosttype}' is not supported") }
   }
 

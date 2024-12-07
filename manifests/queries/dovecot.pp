@@ -58,8 +58,7 @@ class postfixadmin::queries::dovecot (
   String  $gid                     = '',
   Boolean $quota                   = true,
 ) {
-
-  file{ $dir:
+  file { $dir:
     ensure => 'directory',
     owner  => $owner,
     group  => $group,
@@ -72,7 +71,7 @@ class postfixadmin::queries::dovecot (
   ]
 
   $maps.each | $mapname | {
-    file{ "${dir}/${mapname}.conf.ext":
+    file { "${dir}/${mapname}.conf.ext":
       owner   => $owner,
       group   => $group,
       mode    => $mode,

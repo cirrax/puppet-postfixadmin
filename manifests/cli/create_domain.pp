@@ -29,9 +29,8 @@ define postfixadmin::cli::create_domain (
   Integer $quota           = -1,
   Integer $maxquota        = -1,
   Boolean $default_aliases = true,
-){
-
-  include ::postfixadmin::cli::params
+) {
+  include postfixadmin::cli::params
   $cmd = $postfixadmin::cli::params::cmd
 
   if $aliases != -1 {
@@ -66,7 +65,7 @@ define postfixadmin::cli::create_domain (
 
   $options= "--description '${description}' ${_aliases} ${_mailboxes} ${_maxquota} ${_quota} ${_default_aliases}"
 
-  exec {"postfixadmin create_domain ${domain}":
+  exec { "postfixadmin create_domain ${domain}":
     path    => $postfixadmin::cli::params::path,
     command => "${cmd} domain add ${domain} ${options}|grep 'has been added'",
     unless  => "${cmd} domain view ${domain}|grep 'Last modified: '",

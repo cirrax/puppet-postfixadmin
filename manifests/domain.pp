@@ -14,7 +14,6 @@ define postfixadmin::domain (
   String $target_domain  = '',
   Hash   $cli_parameters = {},
 ) {
-
   if $target_domain == '' {
     # domain
     ensure_resources('postfixadmin::cli::create_domain',

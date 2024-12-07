@@ -11,8 +11,7 @@ class postfixadmin::install (
   Array  $packages       = [],
   String $package_ensure = 'installed',
 ) {
-
-  package{'postfix-admin':
+  package { 'postfix-admin':
     ensure => $package_ensure,
     name   => $package_name,
   }
@@ -22,5 +21,4 @@ class postfixadmin::install (
     tag    => 'postfixadmin-packages',
   }
   ensure_packages($packages, $package_default)
-
 }

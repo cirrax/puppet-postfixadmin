@@ -12,6 +12,5 @@
 class postfixadmin::cli::params (
   $path = ['/bin','/usr/bin'],
   $cmd  = 'bash /usr/share/postfixadmin/scripts/postfixadmin-cli',
-){
-
+) {
 }

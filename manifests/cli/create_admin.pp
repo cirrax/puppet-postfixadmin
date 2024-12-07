@@ -19,9 +19,8 @@ define postfixadmin::cli::create_admin (
   String  $password   = '',
   Boolean $superadmin = false,
   Boolean $send_mail  = false,
-){
-
-  include ::postfixadmin::cli::params
+) {
+  include postfixadmin::cli::params
   $cmd  = $postfixadmin::cli::params::cmd
 
   if $password=='' {
@@ -36,7 +35,7 @@ define postfixadmin::cli::create_admin (
     $_suadmin = ''
   }
 
-  exec {"postfixadmin create_admin ${admin}":
+  exec { "postfixadmin create_admin ${admin}":
     path     => $postfixadmin::cli::params::path,
     provider => 'shell',
     command  => "${cmd} admin add ${admin} --password ${pw} --password2 ${pw} ${_suadmin}| grep 'has been added'",
@@ -44,7 +43,7 @@ define postfixadmin::cli::create_admin (
   }
 
   if $send_mail {
-    exec {"postfixadmin sending mail to ${admin}":
+    exec { "postfixadmin sending mail to ${admin}":
       path        => $postfixadmin::cli::params::path,
       command     => "echo 'youre pw is: ${pw}'| mail -s 'new postfixadmin account' ${admin}",
       refreshonly => true,

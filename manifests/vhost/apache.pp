@@ -25,9 +25,8 @@ class postfixadmin::vhost::apache (
   String  $port            = $postfixadmin::vhost::port,
   Boolean $redirect_to_ssl = $postfixadmin::vhost::redirect_to_ssl,
 ) inherits postfixadmin::vhost {
-
-  include ::apache
-  include ::apache::mod::php
+  include apache
+  include apache::mod::php
 
   $vhost = {
     $servername => {
