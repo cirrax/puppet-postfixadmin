@@ -19,10 +19,10 @@ class postfixadmin::vhost::apache (
   String  $docroot         = $postfixadmin::vhost::docroot,
   Hash    $apache_vhost    = {},
   Boolean $ssl             = $postfixadmin::vhost::ssl,
-  String  $ssl_cert        = $postfixadmin::vhost::ssl_cert,
-  String  $ssl_key         = $postfixadmin::vhost::ssl_key,
-  String  $ssl_chain       = $postfixadmin::vhost::ssl_chain,
-  String  $port            = $postfixadmin::vhost::port,
+  Optional[Stdlib::Absolutepath]  $ssl_cert        = $postfixadmin::vhost::ssl_cert,
+  Optional[Stdlib::Absolutepath]  $ssl_key         = $postfixadmin::vhost::ssl_key,
+  Optional[Stdlib::Absolutepath] $ssl_chain       = $postfixadmin::vhost::ssl_chain,
+  Integer  $port            = $postfixadmin::vhost::port,
   Boolean $redirect_to_ssl = $postfixadmin::vhost::redirect_to_ssl,
 ) inherits postfixadmin::vhost {
   include apache
