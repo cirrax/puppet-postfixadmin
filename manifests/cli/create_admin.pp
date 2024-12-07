@@ -6,7 +6,7 @@
 #  the name of the admin account (needs to be an Email)
 #  Defaults to $title
 # @param password
-#  The passord to initialy set. If set to '' (the default) an
+#  The passord to initialy set. If set to undef (the default) an
 #  random password is generated
 # @param superadmin
 #  if set to true the admin is a superadmin with access to all domains
@@ -15,18 +15,18 @@
 #  if true, a mail to $admin is sent with password and url
 #
 define postfixadmin::cli::create_admin (
-  String  $admin      = $title,
-  String  $password   = '',
-  Boolean $superadmin = false,
-  Boolean $send_mail  = false,
+  String              $admin      = $title,
+  Optional[String[1]] $password   = undef,
+  Boolean             $superadmin = false,
+  Boolean             $send_mail  = false,
 ) {
   include postfixadmin::cli::params
   $cmd  = $postfixadmin::cli::params::cmd
 
-  if $password=='' {
-    $pw=postfixadmin_generate_pw()
-  } else {
+  if $password {
     $pw=$password
+  } else {
+    $pw=postfixadmin_generate_pw()
   }
 
   if $superadmin {

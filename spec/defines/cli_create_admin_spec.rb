@@ -3,7 +3,6 @@ require 'spec_helper'
 describe 'postfixadmin::cli::create_admin' do
   let :default_params do
     { admin: 'mytitle',
-      password: '',
       superadmin: false }
   end
 
