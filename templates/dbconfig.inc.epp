@@ -16,6 +16,8 @@ $dbuser='<%= $dbuser %>';
 $dbpass='<%= $dbpass %>';
 <% if $basepath { -%>
 $basepath='<%= $basepath %>';
+<% } else { -%>
+$basepath='';
 <% } -%>
 $dbname='<%= $dbname %>';
 $dbserver='<%= $host %>';
