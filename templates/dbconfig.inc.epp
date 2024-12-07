@@ -4,7 +4,7 @@
       String $dbuser,
       String $host,
       String $dbport,
-      String $basepath,
+      Optional[String] $basepath = undef,
 | -%>
 <?php
 ##
@@ -14,7 +14,9 @@
 ##
 $dbuser='<%= $dbuser %>';
 $dbpass='<%= $dbpass %>';
+<% if $basepath { -%>
 $basepath='<%= $basepath %>';
+<% } -%>
 $dbname='<%= $dbname %>';
 $dbserver='<%= $host %>';
 $dbport='<%= $dbport %>';

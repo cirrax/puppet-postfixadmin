@@ -13,7 +13,7 @@
 #  username to connect to the database.
 #  defaults to: 'postfixadmin'
 # @param basepath
-#  basepath for database, defaults to ''
+#  basepath for database, defaults to undef
 # @param dbport
 #  port to connect to db defaults to '3306' (mysql)
 # @param host
@@ -28,15 +28,15 @@
 #  if you do not want to write, set it to ''
 #
 class postfixadmin::db (
-  String           $dbpass       = 'CHANGEME',
-  String           $dbtype       = 'mysql',
-  String           $dbname       = 'postfixadmin',
-  String           $dbuser       = 'postfixadmin',
-  String           $host         = 'localhost',
-  Optional[String] $host_config  = undef,
-  String           $basepath     = '',
-  String           $dbport       = '3306',
-  String           $dbconfig_inc = '/etc/postfixadmin/dbconfig.inc.php',
+  String              $dbpass       = 'CHANGEME',
+  String              $dbtype       = 'mysql',
+  String              $dbname       = 'postfixadmin',
+  String              $dbuser       = 'postfixadmin',
+  String              $host         = 'localhost',
+  Optional[String]    $host_config  = undef,
+  Optional[String[1]] $basepath     = undef,
+  String              $dbport       = '3306',
+  String              $dbconfig_inc = '/etc/postfixadmin/dbconfig.inc.php',
 ) {
   case $dbtype {
     'mysql': { include postfixadmin::db::mysql }
