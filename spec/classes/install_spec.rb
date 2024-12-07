@@ -15,6 +15,14 @@ describe 'postfixadmin::install' do
         .with_name(params[:package_name])
         .with_ensure(params[:package_ensure])
     }
+
+    it {
+      params[:packages].each do |package|
+        is_expected.to contain_package(package)
+          .with_tag('postfixadmin-packages')
+          .with_ensure(params[:package_ensure])
+      end
+    }
   end
 
   on_supported_os.each do |os, os_facts|
@@ -33,28 +41,11 @@ describe 'postfixadmin::install' do
         let :params do
           default_params.merge(
             package_name: 'somepackage',
-            package_ensure: 'present',
+            packages: ['additional', 'packages'],
           )
         end
 
         it_behaves_like 'postfixadmin::install shared examples'
-      end
-
-      context 'with additional packages' do
-        let :params do
-          default_params.merge(
-            packages: ['somepackage'],
-            package_ensure: 'present',
-          )
-        end
-
-        it_behaves_like 'postfixadmin::install shared examples'
-
-        it {
-          is_expected.to contain_package('somepackage')
-            .with_tag('postfixadmin-packages')
-            .with_ensure(params[:package_ensure])
-        }
       end
     end
   end
