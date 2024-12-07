@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe 'postfixadmin::domain' do
   let :default_params do
-    { target_domain: '',
-      cli_parameters: {} }
+    {
+      cli_parameters: {}
+    }
   end
 
   shared_examples 'postfixadmin::domain shared examples' do
