@@ -8,10 +8,10 @@
 # @param host
 #
 class postfixadmin::db::mysql (
-  $dbname = $postfixadmin::db::dbname,
-  $dbuser = $postfixadmin::db::dbuser,
-  $dbpass = $postfixadmin::db::dbpass,
-  $host   = $postfixadmin::db::host,
+  String $dbname = $postfixadmin::db::dbname,
+  String $dbuser = $postfixadmin::db::dbuser,
+  String $dbpass = $postfixadmin::db::dbpass,
+  String $host   = $postfixadmin::db::host,
 ) inherits postfixadmin::db {
   mysql::db { $dbname :
     user     => $dbuser,

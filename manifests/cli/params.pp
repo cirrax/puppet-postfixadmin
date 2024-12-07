@@ -10,7 +10,7 @@
 #
 #
 class postfixadmin::cli::params (
-  $path = ['/bin','/usr/bin'],
-  $cmd  = 'bash /usr/share/postfixadmin/scripts/postfixadmin-cli',
+  Array  $path = ['/bin','/usr/bin'],
+  String $cmd  = 'bash /usr/share/postfixadmin/scripts/postfixadmin-cli',
 ) {
 }
