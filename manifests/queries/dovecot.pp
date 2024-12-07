@@ -30,33 +30,34 @@
 #  defaults to 'MD5-CRYPT'
 # @param mboxpath
 #  path to the mbailboxes
+#  defaults to undef
 # @param uid
 #  uid to use for mailboxes
 #  must matche dovecot.conf AND Postfix virtual_uid_maps parameter
-#  defaults to '' (not included in query)
+#  defaults to undef (not included in query)
 # @param gid
 #  gid to use for mailboxes
 #  must matche dovecot.conf AND Postfix virtual_gid_maps parameter
-#  defaults to '' (not included in query)
+#  defaults to undef (not included in query)
 # @param quota
 #  if true quota is included in the query
 #  defaults to true
 #
 class postfixadmin::queries::dovecot (
-  String  $dbpass                  = 'CHANGEME',
-  String  $dbuser                  = 'postfixadmin',
-  String  $dbname                  = 'postfixadmin',
-  String  $host                    = 'localhost',
-  Array   $mysql_flags             = [],
-  String  $dir                     = '/etc/dovecot/postfixadmin',
-  String  $owner                   = 'root',
-  String  $group                   = 'root',
-  String  $mode                    = '0640',
-  String  $default_password_scheme = 'MD5-CRYPT',
-  String  $mboxpath                = '',
-  String  $uid                     = '',
-  String  $gid                     = '',
-  Boolean $quota                   = true,
+  String              $dbpass                  = 'CHANGEME',
+  String              $dbuser                  = 'postfixadmin',
+  String              $dbname                  = 'postfixadmin',
+  String              $host                    = 'localhost',
+  Array               $mysql_flags             = [],
+  String              $dir                     = '/etc/dovecot/postfixadmin',
+  String              $owner                   = 'root',
+  String              $group                   = 'root',
+  String              $mode                    = '0640',
+  String              $default_password_scheme = 'MD5-CRYPT',
+  Optional[String[1]] $mboxpath                = undef,
+  Optional[String[1]] $uid                     = undef,
+  Optional[String[1]] $gid                     = undef,
+  Boolean             $quota                   = true,
 ) {
   file { $dir:
     ensure => 'directory',

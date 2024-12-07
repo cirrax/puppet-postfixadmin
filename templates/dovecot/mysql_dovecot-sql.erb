@@ -42,15 +42,15 @@ default_pass_scheme = <%= @default_password_scheme %>
 password_query = SELECT username AS user,password FROM mailbox WHERE username = '%u' AND active='1'
 
 user_query = SELECT \
-<% if @mboxpath != '' -%>
+<% if @mboxpath -%>
 	       CONCAT('<%= @mboxpath %>', maildir) AS home, \
 <% else -%>
 	       maildir AS home, \
 <% end -%>
-<% if @uid != '' -%>
+<% if @uid -%>
 	       <%= @uid %> AS uid, \
 <% end -%>
-<% if @gid != '' -%>
+<% if @gid -%>
 	       <%= @gid %> AS gid, \
 <% end -%>
 <% if @quota -%>

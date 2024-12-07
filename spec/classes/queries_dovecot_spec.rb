@@ -12,9 +12,6 @@ describe 'postfixadmin::queries::dovecot' do
       group: 'root',
       mode: '0640',
       default_password_scheme: 'MD5-CRYPT',
-      mboxpath: '',
-      uid: '',
-      gid: '',
       quota: true }
   end
 
