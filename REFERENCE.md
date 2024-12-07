@@ -7,23 +7,23 @@
 ### Classes
 
 * [`postfixadmin`](#postfixadmin): Postfixadmin main class
-* [`postfixadmin::cli::params`](#postfixadmincliparams): Class to set the postfixadmin client program to use  Parameters:
-* [`postfixadmin::config`](#postfixadminconfig): class for postfixadmin configuration
-* [`postfixadmin::db`](#postfixadmindb): install database
-* [`postfixadmin::db::mysql`](#postfixadmindbmysql): privat class to manage mysql db use postfixadmin::db instead
-* [`postfixadmin::fix_debian_bug`](#postfixadminfix_debian_bug): This fixes debian bug #856338  see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=856338
-* [`postfixadmin::install`](#postfixadmininstall): install packages
-* [`postfixadmin::queries::dovecot`](#postfixadminqueriesdovecot): class to create mysql maps for postfix  Parameters:
-* [`postfixadmin::queries::postfix`](#postfixadminqueriespostfix): class to create mysql maps for postfix
-* [`postfixadmin::vhost`](#postfixadminvhost): This class chooses the type of vhost to run webserver
-* [`postfixadmin::vhost::apache`](#postfixadminvhostapache): internal class that installs an apache vhost Parameters are inherited from postfixadmin::vhost
+* [`postfixadmin::cli::params`](#postfixadmin--cli--params): Class to set the postfixadmin client program to use  Parameters:
+* [`postfixadmin::config`](#postfixadmin--config): class for postfixadmin configuration
+* [`postfixadmin::db`](#postfixadmin--db): install database
+* [`postfixadmin::db::mysql`](#postfixadmin--db--mysql): privat class to manage mysql db use postfixadmin::db instead
+* [`postfixadmin::fix_debian_bug`](#postfixadmin--fix_debian_bug): This fixes debian bug #856338  see: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=856338
+* [`postfixadmin::install`](#postfixadmin--install): install packages
+* [`postfixadmin::queries::dovecot`](#postfixadmin--queries--dovecot): class to create mysql maps for postfix  Parameters:
+* [`postfixadmin::queries::postfix`](#postfixadmin--queries--postfix): class to create mysql maps for postfix
+* [`postfixadmin::vhost`](#postfixadmin--vhost): This class chooses the type of vhost to run webserver
+* [`postfixadmin::vhost::apache`](#postfixadmin--vhost--apache): internal class that installs an apache vhost Parameters are inherited from postfixadmin::vhost
 
 ### Defined types
 
-* [`postfixadmin::cli::create_admin`](#postfixadminclicreate_admin): This define just ensures that a an admin account exists.
-* [`postfixadmin::cli::create_aliasdomain`](#postfixadminclicreate_aliasdomain): define to ensure an aliasdomain exists
-* [`postfixadmin::cli::create_domain`](#postfixadminclicreate_domain): Ensures, that a domain exists But does not modify any domains
-* [`postfixadmin::domain`](#postfixadmindomain): helper define to create domains
+* [`postfixadmin::cli::create_admin`](#postfixadmin--cli--create_admin): This define just ensures that a an admin account exists.
+* [`postfixadmin::cli::create_aliasdomain`](#postfixadmin--cli--create_aliasdomain): define to ensure an aliasdomain exists
+* [`postfixadmin::cli::create_domain`](#postfixadmin--cli--create_domain): Ensures, that a domain exists But does not modify any domains
+* [`postfixadmin::domain`](#postfixadmin--domain): helper define to create domains
 
 ### Functions
 
@@ -39,35 +39,35 @@ Postfixadmin main class
 
 The following parameters are available in the `postfixadmin` class:
 
-* [`ensure_database`](#ensure_database)
-* [`ensure_vhost`](#ensure_vhost)
-* [`ensure_postfix_queries`](#ensure_postfix_queries)
-* [`ensure_dovecot_queries`](#ensure_dovecot_queries)
-* [`admins`](#admins)
-* [`domains`](#domains)
-* [`aliasdomains`](#aliasdomains)
-* [`dovecot_classes`](#dovecot_classes)
-* [`postfix_classes`](#postfix_classes)
+* [`ensure_database`](#-postfixadmin--ensure_database)
+* [`ensure_vhost`](#-postfixadmin--ensure_vhost)
+* [`ensure_postfix_queries`](#-postfixadmin--ensure_postfix_queries)
+* [`ensure_dovecot_queries`](#-postfixadmin--ensure_dovecot_queries)
+* [`admins`](#-postfixadmin--admins)
+* [`domains`](#-postfixadmin--domains)
+* [`aliasdomains`](#-postfixadmin--aliasdomains)
+* [`dovecot_classes`](#-postfixadmin--dovecot_classes)
+* [`postfix_classes`](#-postfixadmin--postfix_classes)
 
-##### <a name="ensure_database"></a>`ensure_database`
+##### <a name="-postfixadmin--ensure_database"></a>`ensure_database`
 
 Data type: `Boolean`
 
 if true a database is created
 Defaults to false
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="ensure_vhost"></a>`ensure_vhost`
+##### <a name="-postfixadmin--ensure_vhost"></a>`ensure_vhost`
 
 Data type: `Boolean`
 
 if true a virtualhost is created
 Defaults to false
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="ensure_postfix_queries"></a>`ensure_postfix_queries`
+##### <a name="-postfixadmin--ensure_postfix_queries"></a>`ensure_postfix_queries`
 
 Data type: `Boolean`
 
@@ -75,9 +75,9 @@ if true the maps querying the database
 for postfix are created
 Defaults to false
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="ensure_dovecot_queries"></a>`ensure_dovecot_queries`
+##### <a name="-postfixadmin--ensure_dovecot_queries"></a>`ensure_dovecot_queries`
 
 Data type: `Boolean`
 
@@ -85,9 +85,9 @@ if true the maps querying the database
 for dovecot are created
 Defaults to false
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="admins"></a>`admins`
+##### <a name="-postfixadmin--admins"></a>`admins`
 
 Data type: `Hash`
 
@@ -96,7 +96,7 @@ Defaults to {}
 
 Default value: `{}`
 
-##### <a name="domains"></a>`domains`
+##### <a name="-postfixadmin--domains"></a>`domains`
 
 Data type: `Hash`
 
@@ -105,7 +105,7 @@ Defaults to {}
 
 Default value: `{}`
 
-##### <a name="aliasdomains"></a>`aliasdomains`
+##### <a name="-postfixadmin--aliasdomains"></a>`aliasdomains`
 
 Data type: `Hash`
 
@@ -114,7 +114,7 @@ Defaults to {}
 
 Default value: `{}`
 
-##### <a name="dovecot_classes"></a>`dovecot_classes`
+##### <a name="-postfixadmin--dovecot_classes"></a>`dovecot_classes`
 
 Data type: `Array`
 
@@ -123,7 +123,7 @@ query installation (defaults to ['dovecot'])
 
 Default value: `['dovecot']`
 
-##### <a name="postfix_classes"></a>`postfix_classes`
+##### <a name="-postfixadmin--postfix_classes"></a>`postfix_classes`
 
 Data type: `Array`
 
@@ -132,7 +132,7 @@ query installation (defaults to ['postfix'])
 
 Default value: `['postfix']`
 
-### <a name="postfixadmincliparams"></a>`postfixadmin::cli::params`
+### <a name="postfixadmin--cli--params"></a>`postfixadmin::cli::params`
 
 Class to set the postfixadmin client program to use
 
@@ -142,20 +142,20 @@ Parameters:
 
 The following parameters are available in the `postfixadmin::cli::params` class:
 
-* [`path`](#path)
-* [`cmd`](#cmd)
+* [`path`](#-postfixadmin--cli--params--path)
+* [`cmd`](#-postfixadmin--cli--params--cmd)
 
-##### <a name="path"></a>`path`
+##### <a name="-postfixadmin--cli--params--path"></a>`path`
 
-Data type: `Any`
+Data type: `Array`
 
 
 
 Default value: `['/bin','/usr/bin']`
 
-##### <a name="cmd"></a>`cmd`
+##### <a name="-postfixadmin--cli--params--cmd"></a>`cmd`
 
-Data type: `Any`
+Data type: `String`
 
 the postfixadmin-cli program
 defaults to:
@@ -163,7 +163,7 @@ defaults to:
 
 Default value: `'bash /usr/share/postfixadmin/scripts/postfixadmin-cli'`
 
-### <a name="postfixadminconfig"></a>`postfixadmin::config`
+### <a name="postfixadmin--config"></a>`postfixadmin::config`
 
 class for postfixadmin configuration
 
@@ -171,13 +171,13 @@ class for postfixadmin configuration
 
 The following parameters are available in the `postfixadmin::config` class:
 
-* [`config_file`](#config_file)
-* [`configs`](#configs)
-* [`owner`](#owner)
-* [`group`](#group)
-* [`mode`](#mode)
+* [`config_file`](#-postfixadmin--config--config_file)
+* [`configs`](#-postfixadmin--config--configs)
+* [`owner`](#-postfixadmin--config--owner)
+* [`group`](#-postfixadmin--config--group)
+* [`mode`](#-postfixadmin--config--mode)
 
-##### <a name="config_file"></a>`config_file`
+##### <a name="-postfixadmin--config--config_file"></a>`config_file`
 
 Data type: `String`
 
@@ -185,7 +185,7 @@ configuration file to use
 
 Default value: `'/etc/postfixadmin/config.local.php'`
 
-##### <a name="configs"></a>`configs`
+##### <a name="-postfixadmin--config--configs"></a>`configs`
 
 Data type: `Hash`
 
@@ -194,7 +194,7 @@ Defaults to {}
 
 Default value: `{}`
 
-##### <a name="owner"></a>`owner`
+##### <a name="-postfixadmin--config--owner"></a>`owner`
 
 Data type: `String`
 
@@ -202,7 +202,7 @@ configfile owner
 
 Default value: `'root'`
 
-##### <a name="group"></a>`group`
+##### <a name="-postfixadmin--config--group"></a>`group`
 
 Data type: `String`
 
@@ -210,7 +210,7 @@ configfile group
 
 Default value: `'www-data'`
 
-##### <a name="mode"></a>`mode`
+##### <a name="-postfixadmin--config--mode"></a>`mode`
 
 Data type: `String`
 
@@ -218,7 +218,7 @@ configfile mode
 
 Default value: `'0640'`
 
-### <a name="postfixadmindb"></a>`postfixadmin::db`
+### <a name="postfixadmin--db"></a>`postfixadmin::db`
 
 install database
 
@@ -226,17 +226,17 @@ install database
 
 The following parameters are available in the `postfixadmin::db` class:
 
-* [`dbpass`](#dbpass)
-* [`dbtype`](#dbtype)
-* [`dbname`](#dbname)
-* [`dbuser`](#dbuser)
-* [`basepath`](#basepath)
-* [`dbport`](#dbport)
-* [`host`](#host)
-* [`host_config`](#host_config)
-* [`dbconfig_inc`](#dbconfig_inc)
+* [`dbpass`](#-postfixadmin--db--dbpass)
+* [`dbtype`](#-postfixadmin--db--dbtype)
+* [`dbname`](#-postfixadmin--db--dbname)
+* [`dbuser`](#-postfixadmin--db--dbuser)
+* [`basepath`](#-postfixadmin--db--basepath)
+* [`dbport`](#-postfixadmin--db--dbport)
+* [`host`](#-postfixadmin--db--host)
+* [`host_config`](#-postfixadmin--db--host_config)
+* [`dbconfig_inc`](#-postfixadmin--db--dbconfig_inc)
 
-##### <a name="dbpass"></a>`dbpass`
+##### <a name="-postfixadmin--db--dbpass"></a>`dbpass`
 
 Data type: `String`
 
@@ -244,7 +244,7 @@ password to connect to the database.
 
 Default value: `'CHANGEME'`
 
-##### <a name="dbtype"></a>`dbtype`
+##### <a name="-postfixadmin--db--dbtype"></a>`dbtype`
 
 Data type: `String`
 
@@ -253,7 +253,7 @@ is supported.
 
 Default value: `'mysql'`
 
-##### <a name="dbname"></a>`dbname`
+##### <a name="-postfixadmin--db--dbname"></a>`dbname`
 
 Data type: `String`
 
@@ -262,7 +262,7 @@ defaults to: 'postfixadmin'
 
 Default value: `'postfixadmin'`
 
-##### <a name="dbuser"></a>`dbuser`
+##### <a name="-postfixadmin--db--dbuser"></a>`dbuser`
 
 Data type: `String`
 
@@ -271,15 +271,15 @@ defaults to: 'postfixadmin'
 
 Default value: `'postfixadmin'`
 
-##### <a name="basepath"></a>`basepath`
+##### <a name="-postfixadmin--db--basepath"></a>`basepath`
 
-Data type: `String`
+Data type: `Optional[String[1]]`
 
-basepath for database, defaults to ''
+basepath for database, defaults to undef
 
-Default value: `''`
+Default value: `undef`
 
-##### <a name="dbport"></a>`dbport`
+##### <a name="-postfixadmin--db--dbport"></a>`dbport`
 
 Data type: `String`
 
@@ -287,7 +287,7 @@ port to connect to db defaults to '3306' (mysql)
 
 Default value: `'3306'`
 
-##### <a name="host"></a>`host`
+##### <a name="-postfixadmin--db--host"></a>`host`
 
 Data type: `String`
 
@@ -296,16 +296,16 @@ defaults to 'localhost'
 
 Default value: `'localhost'`
 
-##### <a name="host_config"></a>`host_config`
+##### <a name="-postfixadmin--db--host_config"></a>`host_config`
 
 Data type: `Optional[String]`
 
 host that is used to connect to database
 defaults to same as host.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="dbconfig_inc"></a>`dbconfig_inc`
+##### <a name="-postfixadmin--db--dbconfig_inc"></a>`dbconfig_inc`
 
 Data type: `String`
 
@@ -315,7 +315,7 @@ if you do not want to write, set it to ''
 
 Default value: `'/etc/postfixadmin/dbconfig.inc.php'`
 
-### <a name="postfixadmindbmysql"></a>`postfixadmin::db::mysql`
+### <a name="postfixadmin--db--mysql"></a>`postfixadmin::db::mysql`
 
 privat class to manage mysql db
 use postfixadmin::db instead
@@ -324,44 +324,44 @@ use postfixadmin::db instead
 
 The following parameters are available in the `postfixadmin::db::mysql` class:
 
-* [`dbname`](#dbname)
-* [`dbuser`](#dbuser)
-* [`dbpass`](#dbpass)
-* [`host`](#host)
+* [`dbname`](#-postfixadmin--db--mysql--dbname)
+* [`dbuser`](#-postfixadmin--db--mysql--dbuser)
+* [`dbpass`](#-postfixadmin--db--mysql--dbpass)
+* [`host`](#-postfixadmin--db--mysql--host)
 
-##### <a name="dbname"></a>`dbname`
+##### <a name="-postfixadmin--db--mysql--dbname"></a>`dbname`
 
-Data type: `Any`
+Data type: `String`
 
 
 
 Default value: `$postfixadmin::db::dbname`
 
-##### <a name="dbuser"></a>`dbuser`
+##### <a name="-postfixadmin--db--mysql--dbuser"></a>`dbuser`
 
-Data type: `Any`
+Data type: `String`
 
 
 
 Default value: `$postfixadmin::db::dbuser`
 
-##### <a name="dbpass"></a>`dbpass`
+##### <a name="-postfixadmin--db--mysql--dbpass"></a>`dbpass`
 
-Data type: `Any`
+Data type: `String`
 
 
 
 Default value: `$postfixadmin::db::dbpass`
 
-##### <a name="host"></a>`host`
+##### <a name="-postfixadmin--db--mysql--host"></a>`host`
 
-Data type: `Any`
+Data type: `String`
 
 
 
 Default value: `$postfixadmin::db::host`
 
-### <a name="postfixadminfix_debian_bug"></a>`postfixadmin::fix_debian_bug`
+### <a name="postfixadmin--fix_debian_bug"></a>`postfixadmin::fix_debian_bug`
 
 This fixes debian bug #856338
 
@@ -372,9 +372,9 @@ https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=856338
 
 The following parameters are available in the `postfixadmin::fix_debian_bug` class:
 
-* [`docroot`](#docroot)
+* [`docroot`](#-postfixadmin--fix_debian_bug--docroot)
 
-##### <a name="docroot"></a>`docroot`
+##### <a name="-postfixadmin--fix_debian_bug--docroot"></a>`docroot`
 
 Data type: `String`
 
@@ -382,7 +382,7 @@ the document root
 
 Default value: `'/usr/share/postfixadmin'`
 
-### <a name="postfixadmininstall"></a>`postfixadmin::install`
+### <a name="postfixadmin--install"></a>`postfixadmin::install`
 
 install packages
 
@@ -390,11 +390,11 @@ install packages
 
 The following parameters are available in the `postfixadmin::install` class:
 
-* [`package_name`](#package_name)
-* [`packages`](#packages)
-* [`package_ensure`](#package_ensure)
+* [`package_name`](#-postfixadmin--install--package_name)
+* [`packages`](#-postfixadmin--install--packages)
+* [`package_ensure`](#-postfixadmin--install--package_ensure)
 
-##### <a name="package_name"></a>`package_name`
+##### <a name="-postfixadmin--install--package_name"></a>`package_name`
 
 Data type: `String`
 
@@ -402,7 +402,7 @@ name of the package to install
 
 Default value: `'postfixadmin'`
 
-##### <a name="packages"></a>`packages`
+##### <a name="-postfixadmin--install--packages"></a>`packages`
 
 Data type: `Array`
 
@@ -410,7 +410,7 @@ additional packages to install
 
 Default value: `[]`
 
-##### <a name="package_ensure"></a>`package_ensure`
+##### <a name="-postfixadmin--install--package_ensure"></a>`package_ensure`
 
 Data type: `String`
 
@@ -418,7 +418,7 @@ what to ensure for packages
 
 Default value: `'installed'`
 
-### <a name="postfixadminqueriesdovecot"></a>`postfixadmin::queries::dovecot`
+### <a name="postfixadmin--queries--dovecot"></a>`postfixadmin::queries::dovecot`
 
 class to create mysql maps for postfix
 
@@ -428,22 +428,22 @@ Parameters:
 
 The following parameters are available in the `postfixadmin::queries::dovecot` class:
 
-* [`dbpass`](#dbpass)
-* [`dbuser`](#dbuser)
-* [`dbname`](#dbname)
-* [`host`](#host)
-* [`mysql_flags`](#mysql_flags)
-* [`dir`](#dir)
-* [`owner`](#owner)
-* [`group`](#group)
-* [`mode`](#mode)
-* [`default_password_scheme`](#default_password_scheme)
-* [`mboxpath`](#mboxpath)
-* [`uid`](#uid)
-* [`gid`](#gid)
-* [`quota`](#quota)
+* [`dbpass`](#-postfixadmin--queries--dovecot--dbpass)
+* [`dbuser`](#-postfixadmin--queries--dovecot--dbuser)
+* [`dbname`](#-postfixadmin--queries--dovecot--dbname)
+* [`host`](#-postfixadmin--queries--dovecot--host)
+* [`mysql_flags`](#-postfixadmin--queries--dovecot--mysql_flags)
+* [`dir`](#-postfixadmin--queries--dovecot--dir)
+* [`owner`](#-postfixadmin--queries--dovecot--owner)
+* [`group`](#-postfixadmin--queries--dovecot--group)
+* [`mode`](#-postfixadmin--queries--dovecot--mode)
+* [`default_password_scheme`](#-postfixadmin--queries--dovecot--default_password_scheme)
+* [`mboxpath`](#-postfixadmin--queries--dovecot--mboxpath)
+* [`uid`](#-postfixadmin--queries--dovecot--uid)
+* [`gid`](#-postfixadmin--queries--dovecot--gid)
+* [`quota`](#-postfixadmin--queries--dovecot--quota)
 
-##### <a name="dbpass"></a>`dbpass`
+##### <a name="-postfixadmin--queries--dovecot--dbpass"></a>`dbpass`
 
 Data type: `String`
 
@@ -451,7 +451,7 @@ password to connect to the database.
 
 Default value: `'CHANGEME'`
 
-##### <a name="dbuser"></a>`dbuser`
+##### <a name="-postfixadmin--queries--dovecot--dbuser"></a>`dbuser`
 
 Data type: `String`
 
@@ -460,7 +460,7 @@ defaults to: 'postfixadmin'
 
 Default value: `'postfixadmin'`
 
-##### <a name="dbname"></a>`dbname`
+##### <a name="-postfixadmin--queries--dovecot--dbname"></a>`dbname`
 
 Data type: `String`
 
@@ -469,7 +469,7 @@ defaults to: 'postfixadmin'
 
 Default value: `'postfixadmin'`
 
-##### <a name="host"></a>`host`
+##### <a name="-postfixadmin--queries--dovecot--host"></a>`host`
 
 Data type: `String`
 
@@ -478,7 +478,7 @@ defaults to localhost
 
 Default value: `'localhost'`
 
-##### <a name="mysql_flags"></a>`mysql_flags`
+##### <a name="-postfixadmin--queries--dovecot--mysql_flags"></a>`mysql_flags`
 
 Data type: `Array`
 
@@ -487,7 +487,7 @@ eg. ssl settings. defaults to []
 
 Default value: `[]`
 
-##### <a name="dir"></a>`dir`
+##### <a name="-postfixadmin--queries--dovecot--dir"></a>`dir`
 
 Data type: `String`
 
@@ -495,7 +495,7 @@ directory to place the map
 
 Default value: `'/etc/dovecot/postfixadmin'`
 
-##### <a name="owner"></a>`owner`
+##### <a name="-postfixadmin--queries--dovecot--owner"></a>`owner`
 
 Data type: `String`
 
@@ -503,7 +503,7 @@ owner of the map files
 
 Default value: `'root'`
 
-##### <a name="group"></a>`group`
+##### <a name="-postfixadmin--queries--dovecot--group"></a>`group`
 
 Data type: `String`
 
@@ -511,7 +511,7 @@ group of the map files
 
 Default value: `'root'`
 
-##### <a name="mode"></a>`mode`
+##### <a name="-postfixadmin--queries--dovecot--mode"></a>`mode`
 
 Data type: `String`
 
@@ -519,7 +519,7 @@ mode of the map files
 
 Default value: `'0640'`
 
-##### <a name="default_password_scheme"></a>`default_password_scheme`
+##### <a name="-postfixadmin--queries--dovecot--default_password_scheme"></a>`default_password_scheme`
 
 Data type: `String`
 
@@ -529,44 +529,45 @@ defaults to 'MD5-CRYPT'
 
 Default value: `'MD5-CRYPT'`
 
-##### <a name="mboxpath"></a>`mboxpath`
+##### <a name="-postfixadmin--queries--dovecot--mboxpath"></a>`mboxpath`
 
-Data type: `String`
+Data type: `Optional[String[1]]`
 
 path to the mbailboxes
+defaults to undef
 
-Default value: `''`
+Default value: `undef`
 
-##### <a name="uid"></a>`uid`
+##### <a name="-postfixadmin--queries--dovecot--uid"></a>`uid`
 
-Data type: `String`
+Data type: `Optional[String[1]]`
 
 uid to use for mailboxes
 must matche dovecot.conf AND Postfix virtual_uid_maps parameter
-defaults to '' (not included in query)
+defaults to undef (not included in query)
 
-Default value: `''`
+Default value: `undef`
 
-##### <a name="gid"></a>`gid`
+##### <a name="-postfixadmin--queries--dovecot--gid"></a>`gid`
 
-Data type: `String`
+Data type: `Optional[String[1]]`
 
 gid to use for mailboxes
 must matche dovecot.conf AND Postfix virtual_gid_maps parameter
-defaults to '' (not included in query)
+defaults to undef (not included in query)
 
-Default value: `''`
+Default value: `undef`
 
-##### <a name="quota"></a>`quota`
+##### <a name="-postfixadmin--queries--dovecot--quota"></a>`quota`
 
 Data type: `Boolean`
 
 if true quota is included in the query
 defaults to true
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="postfixadminqueriespostfix"></a>`postfixadmin::queries::postfix`
+### <a name="postfixadmin--queries--postfix"></a>`postfixadmin::queries::postfix`
 
 class to create mysql maps for postfix
 
@@ -574,17 +575,17 @@ class to create mysql maps for postfix
 
 The following parameters are available in the `postfixadmin::queries::postfix` class:
 
-* [`dbpass`](#dbpass)
-* [`dbuser`](#dbuser)
-* [`dbname`](#dbname)
-* [`hosts`](#hosts)
-* [`dir`](#dir)
-* [`owner`](#owner)
-* [`group`](#group)
-* [`mode`](#mode)
-* [`allow_account_as_sender`](#allow_account_as_sender)
+* [`dbpass`](#-postfixadmin--queries--postfix--dbpass)
+* [`dbuser`](#-postfixadmin--queries--postfix--dbuser)
+* [`dbname`](#-postfixadmin--queries--postfix--dbname)
+* [`hosts`](#-postfixadmin--queries--postfix--hosts)
+* [`dir`](#-postfixadmin--queries--postfix--dir)
+* [`owner`](#-postfixadmin--queries--postfix--owner)
+* [`group`](#-postfixadmin--queries--postfix--group)
+* [`mode`](#-postfixadmin--queries--postfix--mode)
+* [`allow_account_as_sender`](#-postfixadmin--queries--postfix--allow_account_as_sender)
 
-##### <a name="dbpass"></a>`dbpass`
+##### <a name="-postfixadmin--queries--postfix--dbpass"></a>`dbpass`
 
 Data type: `String`
 
@@ -592,7 +593,7 @@ password to connect to the database.
 
 Default value: `'CHANGEME'`
 
-##### <a name="dbuser"></a>`dbuser`
+##### <a name="-postfixadmin--queries--postfix--dbuser"></a>`dbuser`
 
 Data type: `String`
 
@@ -601,7 +602,7 @@ defaults to: 'postfixadmin'
 
 Default value: `'postfixadmin'`
 
-##### <a name="dbname"></a>`dbname`
+##### <a name="-postfixadmin--queries--postfix--dbname"></a>`dbname`
 
 Data type: `String`
 
@@ -610,16 +611,16 @@ defaults to: 'postfixadmin'
 
 Default value: `'postfixadmin'`
 
-##### <a name="hosts"></a>`hosts`
+##### <a name="-postfixadmin--queries--postfix--hosts"></a>`hosts`
 
 Data type: `Array`
 
 Array of hosts to connect to.
 defaults to ['localhost']
 
-Default value: `[ 'localhost' ]`
+Default value: `['localhost']`
 
-##### <a name="dir"></a>`dir`
+##### <a name="-postfixadmin--queries--postfix--dir"></a>`dir`
 
 Data type: `String`
 
@@ -627,7 +628,7 @@ directory to place the map
 
 Default value: `'/etc/postfix/postfixadmin'`
 
-##### <a name="owner"></a>`owner`
+##### <a name="-postfixadmin--queries--postfix--owner"></a>`owner`
 
 Data type: `String`
 
@@ -635,7 +636,7 @@ owner of the map files
 
 Default value: `'root'`
 
-##### <a name="group"></a>`group`
+##### <a name="-postfixadmin--queries--postfix--group"></a>`group`
 
 Data type: `String`
 
@@ -643,7 +644,7 @@ group of the map files
 
 Default value: `'postfix'`
 
-##### <a name="mode"></a>`mode`
+##### <a name="-postfixadmin--queries--postfix--mode"></a>`mode`
 
 Data type: `String`
 
@@ -651,7 +652,7 @@ mode of the map files
 
 Default value: `'0640'`
 
-##### <a name="allow_account_as_sender"></a>`allow_account_as_sender`
+##### <a name="-postfixadmin--queries--postfix--allow_account_as_sender"></a>`allow_account_as_sender`
 
 Data type: `Boolean`
 
@@ -662,9 +663,9 @@ receive any mails (eg. sender address is aliased to another
 mailbox). Accounts needs to be formated as email adresses for
 this to work !
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="postfixadminvhost"></a>`postfixadmin::vhost`
+### <a name="postfixadmin--vhost"></a>`postfixadmin::vhost`
 
 This class chooses the type of vhost
 to run webserver
@@ -673,19 +674,19 @@ to run webserver
 
 The following parameters are available in the `postfixadmin::vhost` class:
 
-* [`vhosttype`](#vhosttype)
-* [`servername`](#servername)
-* [`serveraliases`](#serveraliases)
-* [`docroot`](#docroot)
-* [`ssl`](#ssl)
-* [`ssl_cert`](#ssl_cert)
-* [`ssl_key`](#ssl_key)
-* [`ssl_chain`](#ssl_chain)
-* [`port`](#port)
-* [`redirect_to_ssl`](#redirect_to_ssl)
-* [`create_resources`](#create_resources)
+* [`vhosttype`](#-postfixadmin--vhost--vhosttype)
+* [`servername`](#-postfixadmin--vhost--servername)
+* [`serveraliases`](#-postfixadmin--vhost--serveraliases)
+* [`docroot`](#-postfixadmin--vhost--docroot)
+* [`ssl`](#-postfixadmin--vhost--ssl)
+* [`ssl_cert`](#-postfixadmin--vhost--ssl_cert)
+* [`ssl_key`](#-postfixadmin--vhost--ssl_key)
+* [`ssl_chain`](#-postfixadmin--vhost--ssl_chain)
+* [`port`](#-postfixadmin--vhost--port)
+* [`redirect_to_ssl`](#-postfixadmin--vhost--redirect_to_ssl)
+* [`create_resources`](#-postfixadmin--vhost--create_resources)
 
-##### <a name="vhosttype"></a>`vhosttype`
+##### <a name="-postfixadmin--vhost--vhosttype"></a>`vhosttype`
 
 Data type: `String`
 
@@ -693,15 +694,15 @@ type of vhost to run. currently only apache supported (default)
 
 Default value: `'apache'`
 
-##### <a name="servername"></a>`servername`
+##### <a name="-postfixadmin--vhost--servername"></a>`servername`
 
 Data type: `String`
 
 Servername (defaults to $::fqdn)
 
-Default value: `$::fqdn`
+Default value: `$facts['networking']['fqdn']`
 
-##### <a name="serveraliases"></a>`serveraliases`
+##### <a name="-postfixadmin--vhost--serveraliases"></a>`serveraliases`
 
 Data type: `Array`
 
@@ -709,7 +710,7 @@ Array of Serveraliasess to listen to (default [])
 
 Default value: `[]`
 
-##### <a name="docroot"></a>`docroot`
+##### <a name="-postfixadmin--vhost--docroot"></a>`docroot`
 
 Data type: `String`
 
@@ -717,57 +718,57 @@ Document root
 
 Default value: `'/usr/share/postfixadmin'`
 
-##### <a name="ssl"></a>`ssl`
+##### <a name="-postfixadmin--vhost--ssl"></a>`ssl`
 
 Data type: `Boolean`
 
 If true, use ssl (defaults to false)
 If true, you also need to set cert, key and chain.
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="ssl_cert"></a>`ssl_cert`
+##### <a name="-postfixadmin--vhost--ssl_cert"></a>`ssl_cert`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 ssl cert to use
 
-Default value: `unset`
+Default value: `undef`
 
-##### <a name="ssl_key"></a>`ssl_key`
+##### <a name="-postfixadmin--vhost--ssl_key"></a>`ssl_key`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 ssl key to use
 
-Default value: `unset`
+Default value: `undef`
 
-##### <a name="ssl_chain"></a>`ssl_chain`
+##### <a name="-postfixadmin--vhost--ssl_chain"></a>`ssl_chain`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 ssl chain to use
 
-Default value: `unset`
+Default value: `undef`
 
-##### <a name="port"></a>`port`
+##### <a name="-postfixadmin--vhost--port"></a>`port`
 
-Data type: `String`
+Data type: `Integer`
 
 port to use (default 443)
 
-Default value: `'443'`
+Default value: `443`
 
-##### <a name="redirect_to_ssl"></a>`redirect_to_ssl`
+##### <a name="-postfixadmin--vhost--redirect_to_ssl"></a>`redirect_to_ssl`
 
 Data type: `Boolean`
 
 if true, redirects all non https requests to https
 defaults to true.
 
-Default value: ``true``
+Default value: `true`
 
-##### <a name="create_resources"></a>`create_resources`
+##### <a name="-postfixadmin--vhost--create_resources"></a>`create_resources`
 
 Data type: `Hash`
 
@@ -791,7 +792,7 @@ sslcert::get_cert{'get_my_postfix_cert':
 
 Default value: `{}`
 
-### <a name="postfixadminvhostapache"></a>`postfixadmin::vhost::apache`
+### <a name="postfixadmin--vhost--apache"></a>`postfixadmin::vhost::apache`
 
 internal class that installs an apache vhost
 Parameters are inherited from postfixadmin::vhost
@@ -800,18 +801,18 @@ Parameters are inherited from postfixadmin::vhost
 
 The following parameters are available in the `postfixadmin::vhost::apache` class:
 
-* [`servername`](#servername)
-* [`serveraliases`](#serveraliases)
-* [`docroot`](#docroot)
-* [`apache_vhost`](#apache_vhost)
-* [`ssl`](#ssl)
-* [`ssl_cert`](#ssl_cert)
-* [`ssl_key`](#ssl_key)
-* [`ssl_chain`](#ssl_chain)
-* [`port`](#port)
-* [`redirect_to_ssl`](#redirect_to_ssl)
+* [`servername`](#-postfixadmin--vhost--apache--servername)
+* [`serveraliases`](#-postfixadmin--vhost--apache--serveraliases)
+* [`docroot`](#-postfixadmin--vhost--apache--docroot)
+* [`apache_vhost`](#-postfixadmin--vhost--apache--apache_vhost)
+* [`ssl`](#-postfixadmin--vhost--apache--ssl)
+* [`ssl_cert`](#-postfixadmin--vhost--apache--ssl_cert)
+* [`ssl_key`](#-postfixadmin--vhost--apache--ssl_key)
+* [`ssl_chain`](#-postfixadmin--vhost--apache--ssl_chain)
+* [`port`](#-postfixadmin--vhost--apache--port)
+* [`redirect_to_ssl`](#-postfixadmin--vhost--apache--redirect_to_ssl)
 
-##### <a name="servername"></a>`servername`
+##### <a name="-postfixadmin--vhost--apache--servername"></a>`servername`
 
 Data type: `String`
 
@@ -819,7 +820,7 @@ Data type: `String`
 
 Default value: `$postfixadmin::vhost::servername`
 
-##### <a name="serveraliases"></a>`serveraliases`
+##### <a name="-postfixadmin--vhost--apache--serveraliases"></a>`serveraliases`
 
 Data type: `Array`
 
@@ -827,7 +828,7 @@ Data type: `Array`
 
 Default value: `$postfixadmin::vhost::serveraliases`
 
-##### <a name="docroot"></a>`docroot`
+##### <a name="-postfixadmin--vhost--apache--docroot"></a>`docroot`
 
 Data type: `String`
 
@@ -835,7 +836,7 @@ Data type: `String`
 
 Default value: `$postfixadmin::vhost::docroot`
 
-##### <a name="apache_vhost"></a>`apache_vhost`
+##### <a name="-postfixadmin--vhost--apache--apache_vhost"></a>`apache_vhost`
 
 Data type: `Hash`
 
@@ -843,7 +844,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### <a name="ssl"></a>`ssl`
+##### <a name="-postfixadmin--vhost--apache--ssl"></a>`ssl`
 
 Data type: `Boolean`
 
@@ -851,39 +852,39 @@ Data type: `Boolean`
 
 Default value: `$postfixadmin::vhost::ssl`
 
-##### <a name="ssl_cert"></a>`ssl_cert`
+##### <a name="-postfixadmin--vhost--apache--ssl_cert"></a>`ssl_cert`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
 Default value: `$postfixadmin::vhost::ssl_cert`
 
-##### <a name="ssl_key"></a>`ssl_key`
+##### <a name="-postfixadmin--vhost--apache--ssl_key"></a>`ssl_key`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
 Default value: `$postfixadmin::vhost::ssl_key`
 
-##### <a name="ssl_chain"></a>`ssl_chain`
+##### <a name="-postfixadmin--vhost--apache--ssl_chain"></a>`ssl_chain`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
 Default value: `$postfixadmin::vhost::ssl_chain`
 
-##### <a name="port"></a>`port`
+##### <a name="-postfixadmin--vhost--apache--port"></a>`port`
 
-Data type: `String`
+Data type: `Integer`
 
 
 
 Default value: `$postfixadmin::vhost::port`
 
-##### <a name="redirect_to_ssl"></a>`redirect_to_ssl`
+##### <a name="-postfixadmin--vhost--apache--redirect_to_ssl"></a>`redirect_to_ssl`
 
 Data type: `Boolean`
 
@@ -893,7 +894,7 @@ Default value: `$postfixadmin::vhost::redirect_to_ssl`
 
 ## Defined types
 
-### <a name="postfixadminclicreate_admin"></a>`postfixadmin::cli::create_admin`
+### <a name="postfixadmin--cli--create_admin"></a>`postfixadmin::cli::create_admin`
 
 This define just ensures that a
 an admin account exists.
@@ -902,12 +903,12 @@ an admin account exists.
 
 The following parameters are available in the `postfixadmin::cli::create_admin` defined type:
 
-* [`admin`](#admin)
-* [`password`](#password)
-* [`superadmin`](#superadmin)
-* [`send_mail`](#send_mail)
+* [`admin`](#-postfixadmin--cli--create_admin--admin)
+* [`password`](#-postfixadmin--cli--create_admin--password)
+* [`superadmin`](#-postfixadmin--cli--create_admin--superadmin)
+* [`send_mail`](#-postfixadmin--cli--create_admin--send_mail)
 
-##### <a name="admin"></a>`admin`
+##### <a name="-postfixadmin--cli--create_admin--admin"></a>`admin`
 
 Data type: `String`
 
@@ -916,33 +917,33 @@ Defaults to $title
 
 Default value: `$title`
 
-##### <a name="password"></a>`password`
+##### <a name="-postfixadmin--cli--create_admin--password"></a>`password`
 
-Data type: `String`
+Data type: `Optional[String[1]]`
 
-The passord to initialy set. If set to '' (the default) an
+The passord to initialy set. If set to undef (the default) an
 random password is generated
 
-Default value: `''`
+Default value: `undef`
 
-##### <a name="superadmin"></a>`superadmin`
+##### <a name="-postfixadmin--cli--create_admin--superadmin"></a>`superadmin`
 
 Data type: `Boolean`
 
 if set to true the admin is a superadmin with access to all domains
 Default to false
 
-Default value: ``false``
+Default value: `false`
 
-##### <a name="send_mail"></a>`send_mail`
+##### <a name="-postfixadmin--cli--create_admin--send_mail"></a>`send_mail`
 
 Data type: `Boolean`
 
 if true, a mail to $admin is sent with password and url
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="postfixadminclicreate_aliasdomain"></a>`postfixadmin::cli::create_aliasdomain`
+### <a name="postfixadmin--cli--create_aliasdomain"></a>`postfixadmin::cli::create_aliasdomain`
 
 define to ensure an aliasdomain exists
 
@@ -950,17 +951,17 @@ define to ensure an aliasdomain exists
 
 The following parameters are available in the `postfixadmin::cli::create_aliasdomain` defined type:
 
-* [`target_domain`](#target_domain)
-* [`domain`](#domain)
-* [`create_domain`](#create_domain)
+* [`target_domain`](#-postfixadmin--cli--create_aliasdomain--target_domain)
+* [`domain`](#-postfixadmin--cli--create_aliasdomain--domain)
+* [`create_domain`](#-postfixadmin--cli--create_aliasdomain--create_domain)
 
-##### <a name="target_domain"></a>`target_domain`
+##### <a name="-postfixadmin--cli--create_aliasdomain--target_domain"></a>`target_domain`
 
 Data type: `String`
 
 the domain it points to
 
-##### <a name="domain"></a>`domain`
+##### <a name="-postfixadmin--cli--create_aliasdomain--domain"></a>`domain`
 
 Data type: `String`
 
@@ -968,7 +969,7 @@ the domain to ensure (defaults to $title)
 
 Default value: `$title`
 
-##### <a name="create_domain"></a>`create_domain`
+##### <a name="-postfixadmin--cli--create_aliasdomain--create_domain"></a>`create_domain`
 
 Data type: `Boolean`
 
@@ -977,9 +978,9 @@ to create the domain.
 if you set this to false you need to create the domain
 before using this define.
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="postfixadminclicreate_domain"></a>`postfixadmin::cli::create_domain`
+### <a name="postfixadmin--cli--create_domain"></a>`postfixadmin::cli::create_domain`
 
 Ensures, that a domain exists
 But does not modify any domains
@@ -988,15 +989,15 @@ But does not modify any domains
 
 The following parameters are available in the `postfixadmin::cli::create_domain` defined type:
 
-* [`domain`](#domain)
-* [`description`](#description)
-* [`aliases`](#aliases)
-* [`mailboxes`](#mailboxes)
-* [`quota`](#quota)
-* [`maxquota`](#maxquota)
-* [`default_aliases`](#default_aliases)
+* [`domain`](#-postfixadmin--cli--create_domain--domain)
+* [`description`](#-postfixadmin--cli--create_domain--description)
+* [`aliases`](#-postfixadmin--cli--create_domain--aliases)
+* [`mailboxes`](#-postfixadmin--cli--create_domain--mailboxes)
+* [`quota`](#-postfixadmin--cli--create_domain--quota)
+* [`maxquota`](#-postfixadmin--cli--create_domain--maxquota)
+* [`default_aliases`](#-postfixadmin--cli--create_domain--default_aliases)
 
-##### <a name="domain"></a>`domain`
+##### <a name="-postfixadmin--cli--create_domain--domain"></a>`domain`
 
 Data type: `String`
 
@@ -1004,7 +1005,7 @@ The domain defaults to $title
 
 Default value: `$title`
 
-##### <a name="description"></a>`description`
+##### <a name="-postfixadmin--cli--create_domain--description"></a>`description`
 
 Data type: `String`
 
@@ -1012,51 +1013,51 @@ a description defaults to $title
 
 Default value: `$title`
 
-##### <a name="aliases"></a>`aliases`
+##### <a name="-postfixadmin--cli--create_domain--aliases"></a>`aliases`
 
 Data type: `Integer`
 
 amount of Aliases (-1=disable, 0=unlimited)
 defaults to false (do not use option)
 
-Default value: `-`
+Default value: `-1`
 
-##### <a name="mailboxes"></a>`mailboxes`
+##### <a name="-postfixadmin--cli--create_domain--mailboxes"></a>`mailboxes`
 
 Data type: `Integer`
 
 amount of mailboxes (-1=disable, 0=unlimited)
 defaults to false (do not use option)
 
-Default value: `-`
+Default value: `-1`
 
-##### <a name="quota"></a>`quota`
+##### <a name="-postfixadmin--cli--create_domain--quota"></a>`quota`
 
 Data type: `Integer`
 
 domain quota (MB | -1 = disable | 0 = unlimited)
 defaults to false (do not use option)
 
-Default value: `-`
+Default value: `-1`
 
-##### <a name="maxquota"></a>`maxquota`
+##### <a name="-postfixadmin--cli--create_domain--maxquota"></a>`maxquota`
 
 Data type: `Integer`
 
 Mailbox Quota (MB) (MB | -1 = disable | 0 = unlimited)
 defaults to false (do not use option)
 
-Default value: `-`
+Default value: `-1`
 
-##### <a name="default_aliases"></a>`default_aliases`
+##### <a name="-postfixadmin--cli--create_domain--default_aliases"></a>`default_aliases`
 
 Data type: `Boolean`
 
 If true (default) set the default aliases
 
-Default value: ``true``
+Default value: `true`
 
-### <a name="postfixadmindomain"></a>`postfixadmin::domain`
+### <a name="postfixadmin--domain"></a>`postfixadmin::domain`
 
 helper define to create domains
 
@@ -1064,11 +1065,11 @@ helper define to create domains
 
 The following parameters are available in the `postfixadmin::domain` defined type:
 
-* [`domain`](#domain)
-* [`target_domain`](#target_domain)
-* [`cli_parameters`](#cli_parameters)
+* [`domain`](#-postfixadmin--domain--domain)
+* [`target_domain`](#-postfixadmin--domain--target_domain)
+* [`cli_parameters`](#-postfixadmin--domain--cli_parameters)
 
-##### <a name="domain"></a>`domain`
+##### <a name="-postfixadmin--domain--domain"></a>`domain`
 
 Data type: `String`
 
@@ -1076,15 +1077,15 @@ The domain name defaults to $title
 
 Default value: `$title`
 
-##### <a name="target_domain"></a>`target_domain`
+##### <a name="-postfixadmin--domain--target_domain"></a>`target_domain`
 
-Data type: `String`
+Data type: `Optional[String[1]]`
 
-if set, an alias domain is created, defaults to ''
+if set, an alias domain is created, defaults to undef
 
-Default value: `''`
+Default value: `undef`
 
-##### <a name="cli_parameters"></a>`cli_parameters`
+##### <a name="-postfixadmin--domain--cli_parameters"></a>`cli_parameters`
 
 Data type: `Hash`
 
