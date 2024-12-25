@@ -328,12 +328,14 @@ The following parameters are available in the `postfixadmin::db::mysql` class:
 * [`dbuser`](#-postfixadmin--db--mysql--dbuser)
 * [`dbpass`](#-postfixadmin--db--mysql--dbpass)
 * [`host`](#-postfixadmin--db--mysql--host)
+* [`collate`](#-postfixadmin--db--mysql--collate)
+* [`charset`](#-postfixadmin--db--mysql--charset)
 
 ##### <a name="-postfixadmin--db--mysql--dbname"></a>`dbname`
 
 Data type: `String`
 
-
+name of the database
 
 Default value: `$postfixadmin::db::dbname`
 
@@ -341,7 +343,7 @@ Default value: `$postfixadmin::db::dbname`
 
 Data type: `String`
 
-
+username to access the database
 
 Default value: `$postfixadmin::db::dbuser`
 
@@ -349,7 +351,7 @@ Default value: `$postfixadmin::db::dbuser`
 
 Data type: `String`
 
-
+password for the database
 
 Default value: `$postfixadmin::db::dbpass`
 
@@ -357,9 +359,25 @@ Default value: `$postfixadmin::db::dbpass`
 
 Data type: `String`
 
-
+hostname
 
 Default value: `$postfixadmin::db::host`
+
+##### <a name="-postfixadmin--db--mysql--collate"></a>`collate`
+
+Data type: `Optional[String[1]]`
+
+collate for the database
+
+Default value: `undef`
+
+##### <a name="-postfixadmin--db--mysql--charset"></a>`charset`
+
+Data type: `Optional[String[1]]`
+
+charset for the database
+
+Default value: `undef`
 
 ### <a name="postfixadmin--fix_debian_bug"></a>`postfixadmin::fix_debian_bug`
 
