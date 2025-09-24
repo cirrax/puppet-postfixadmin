@@ -1124,5 +1124,5 @@ computes a random password string
 
 computes a random password string
 
-Returns: `String` a random password st
+Returns: `String` a random password
 
