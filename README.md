@@ -1,10 +1,5 @@
 # postfixadmin puppet module
 
-[![Build Status](https://travis-ci.org/cirrax/puppet-postfixadmin.svg?branch=master)](https://travis-ci.org/cirrax/puppet-postfixadmin)
-[![Puppet Forge](https://img.shields.io/puppetforge/v/cirrax/postfixadmin.svg?style=flat-square)](https://forge.puppetlabs.com/cirrax/postfixadmin)
-[![Puppet Forge](https://img.shields.io/puppetforge/dt/cirrax/postfixadmin.svg?style=flat-square)](https://forge.puppet.com/cirrax/postfixadmin)
-[![Puppet Forge](https://img.shields.io/puppetforge/e/cirrax/postfixadmin.svg?style=flat-square)](https://forge.puppet.com/cirrax/postfixadmin)
-[![Puppet Forge](https://img.shields.io/puppetforge/f/cirrax/postfixadmin.svg?style=flat-square)](https://forge.puppet.com/cirrax/postfixadmin)
 
 #### Table of Contents
 

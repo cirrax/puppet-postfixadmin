@@ -5,5 +5,3 @@ fixtures:
     stdlib: puppetlabs/stdlib
     apache: puppetlabs/apache
     mysql: puppetlabs/mysql
-  symlinks:
-    "postfixadmin": "#{source_dir}"
