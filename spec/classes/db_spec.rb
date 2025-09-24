@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::db' do
@@ -19,6 +21,7 @@ describe 'postfixadmin::db' do
       is_expected.to contain_class('postfixadmin::db::mysql')
     }
   end
+
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
@@ -40,7 +43,7 @@ describe 'postfixadmin::db' do
       context 'without dbconfig file' do
         let :params do
           default_params.merge(
-            dbconfig_inc: '',
+            dbconfig_inc: ''
           )
         end
 

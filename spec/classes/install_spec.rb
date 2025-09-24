@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::install' do
@@ -41,7 +43,7 @@ describe 'postfixadmin::install' do
         let :params do
           default_params.merge(
             package_name: 'somepackage',
-            packages: ['additional', 'packages'],
+            packages: %w[additional packages]
           )
         end
 

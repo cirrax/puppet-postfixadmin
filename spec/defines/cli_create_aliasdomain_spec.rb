@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::cli::create_aliasdomain' do
@@ -12,11 +14,12 @@ describe 'postfixadmin::cli::create_aliasdomain' do
     it { is_expected.to contain_class('postfixadmin::cli::params') }
 
     it {
-      is_expected.to contain_exec('postfixadmin create_aliasdomain ' + params[:domain])
+      is_expected.to contain_exec("postfixadmin create_aliasdomain #{params[:domain]}")
         .with_command(%r{ aliasdomain add })
         .with_unless(%r{ aliasdomain view })
     }
   end
+
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
@@ -25,14 +28,14 @@ describe 'postfixadmin::cli::create_aliasdomain' do
         let(:title) { 'mytitle.ch' }
         let :params do
           default_params.merge(
-            target_domain: 'mytarget.ch',
+            target_domain: 'mytarget.ch'
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_aliasdomain shared examples'
 
         it {
-          is_expected.to contain_exec('postfixadmin create_aliasdomain ' + params[:domain])
+          is_expected.to contain_exec("postfixadmin create_aliasdomain #{params[:domain]}")
             .with_command(%r{ mytitle.ch })
             .with_command(%r{ --target-domain mytarget.ch })
             .with_unless(%r{ mytitle.ch|})
@@ -49,14 +52,14 @@ describe 'postfixadmin::cli::create_aliasdomain' do
         let :params do
           default_params.merge(
             domain: 'somewhere.ch',
-            target_domain: 'mytarget.ch',
+            target_domain: 'mytarget.ch'
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_aliasdomain shared examples'
 
         it {
-          is_expected.to contain_exec('postfixadmin create_aliasdomain ' + params[:domain])
+          is_expected.to contain_exec("postfixadmin create_aliasdomain #{params[:domain]}")
             .with_command(%r{ somewhere.ch })
             .with_command(%r{ --target-domain mytarget.ch })
             .with_unless(%r{ somewhere.ch|})
@@ -68,7 +71,7 @@ describe 'postfixadmin::cli::create_aliasdomain' do
         let :params do
           default_params.merge(
             target_domain: 'mytarget.ch',
-            create_domain: false,
+            create_domain: false
           )
         end
 

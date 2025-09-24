@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::queries::postfix' do
@@ -24,49 +26,56 @@ describe 'postfixadmin::queries::postfix' do
     }
 
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_catchall_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_catchall_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_mailbox_limit_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_mailbox_limit_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_domains_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_domains_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_mailbox_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_mailbox_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_mailbox_maps.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_mailbox_maps.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
+
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_sender_access.cf')
+      is_expected.to contain_file("#{params[:dir]}/mysql_sender_access.cf")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
@@ -84,56 +93,63 @@ describe 'postfixadmin::queries::postfix' do
 
         it_behaves_like 'postfixadmin::queries::postfix shared examples'
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_catchall_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_catchall_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_mailbox_limit_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_mailbox_limit_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_domains_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_domains_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_mailbox_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_mailbox_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_mailbox_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_mailbox_maps.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
             .with_content(%r{^hosts    = localhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_sender_access.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_sender_access.cf")
             .with_content(%r{^dbname   = postfixadmin$})
             .with_content(%r{^user     = postfixadmin$})
             .with_content(%r{^password = CHANGEME$})
@@ -147,7 +163,7 @@ describe 'postfixadmin::queries::postfix' do
             dir: '/tmp',
             owner: 'someone',
             group: 'somegroup',
-            mode: '4242',
+            mode: '4242'
           )
         end
 
@@ -160,62 +176,69 @@ describe 'postfixadmin::queries::postfix' do
             dbname: 'mydb',
             dbuser: 'myuser',
             dbpass: 'secret-password',
-            hosts: ['myhost'],
+            hosts: ['myhost']
           )
         end
 
         it_behaves_like 'postfixadmin::queries::postfix shared examples'
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_catchall_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_catchall_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_mailbox_limit_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_mailbox_limit_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_domains_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_domains_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_mailbox_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_mailbox_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_virtual_alias_domain_mailbox_maps.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_virtual_alias_domain_mailbox_maps.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})
             .with_content(%r{^hosts    = myhost$})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_sender_access.cf')
+          is_expected.to contain_file("#{params[:dir]}/mysql_sender_access.cf")
             .with_content(%r{^dbname   = mydb$})
             .with_content(%r{^user     = myuser$})
             .with_content(%r{^password = secret-password$})

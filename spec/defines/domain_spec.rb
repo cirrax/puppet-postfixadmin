@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::domain' do
@@ -10,6 +12,7 @@ describe 'postfixadmin::domain' do
   shared_examples 'postfixadmin::domain shared examples' do
     it { is_expected.to compile.with_all_deps }
   end
+
   context 'with defaults' do
     let(:title) { 'mytitle.ch' }
     let :params do
@@ -30,7 +33,7 @@ describe 'postfixadmin::domain' do
         let(:title) { 'mytitle.ch' }
         let :params do
           default_params.merge(
-            target_domain: 'mytarget.ch',
+            target_domain: 'mytarget.ch'
           )
         end
 

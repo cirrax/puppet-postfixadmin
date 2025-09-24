@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::queries::dovecot' do
@@ -27,19 +29,20 @@ describe 'postfixadmin::queries::dovecot' do
     }
 
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
+      is_expected.to contain_file("#{params[:dir]}/mysql_dovecot-sql.conf.ext")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
 
     it {
-      is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
+      is_expected.to contain_file("#{params[:dir]}/mysql_dovecot-dict-quota.conf.ext")
         .with_owner(params[:owner])
         .with_group(params[:group])
         .with_mode(params[:mode])
     }
   end
+
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
@@ -52,14 +55,15 @@ describe 'postfixadmin::queries::dovecot' do
         it_behaves_like 'postfixadmin::queries::dovecot shared examples'
 
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
+          is_expected.to contain_file("#{params[:dir]}/mysql_dovecot-sql.conf.ext")
             .with_content(%r{dbname=postfixadmin})
             .with_content(%r{user=postfixadmin})
             .with_content(%r{password=CHANGEME})
             .with_content(%r{host=localhost})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
+          is_expected.to contain_file("#{params[:dir]}/mysql_dovecot-dict-quota.conf.ext")
             .with_content(%r{dbname=postfixadmin})
             .with_content(%r{user=postfixadmin})
             .with_content(%r{password=CHANGEME})
@@ -73,7 +77,7 @@ describe 'postfixadmin::queries::dovecot' do
             dir: '/tmp',
             owner: 'someone',
             group: 'somegroup',
-            mode: '4242',
+            mode: '4242'
           )
         end
 
@@ -86,20 +90,21 @@ describe 'postfixadmin::queries::dovecot' do
             dbname: 'mydb',
             dbuser: 'myuser',
             dbpass: 'secret-password',
-            host: 'myhost',
+            host: 'myhost'
           )
         end
 
         it_behaves_like 'postfixadmin::queries::dovecot shared examples'
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-sql.conf.ext')
+          is_expected.to contain_file("#{params[:dir]}/mysql_dovecot-sql.conf.ext")
             .with_content(%r{dbname=mydb})
             .with_content(%r{user=myuser})
             .with_content(%r{password=secret-password})
             .with_content(%r{host=myhost})
         }
+
         it {
-          is_expected.to contain_file(params[:dir] + '/mysql_dovecot-dict-quota.conf.ext')
+          is_expected.to contain_file("#{params[:dir]}/mysql_dovecot-dict-quota.conf.ext")
             .with_content(%r{dbname=mydb})
             .with_content(%r{user=myuser})
             .with_content(%r{password=secret-password})

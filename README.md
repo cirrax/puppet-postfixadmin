@@ -17,7 +17,7 @@ It assumes, you are using hiera to configure.
 
 Just include the postfixadmin class and add some hiera definitions....
 
-Details about the configuration possibilities are documented in the classes or in 
+Details about the configuration possibilities are documented in the classes or in
 the [REFERENCE](https://github.com/cirrax/puppet-postfixadmin/blob/master/REFERENCE.md) file.
 
 ### Remark for Debian bullseye (11)
@@ -52,7 +52,7 @@ postfixadmin::admins:
     #send_mail: true
     # does not work out of the box, needs a mailer installed
 
-postfixadmin::domains: 
+postfixadmin::domains:
   example.com:
     domain: 'example.com'
 

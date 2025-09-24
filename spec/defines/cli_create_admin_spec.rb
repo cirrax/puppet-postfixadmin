@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::cli::create_admin' do
@@ -12,7 +14,7 @@ describe 'postfixadmin::cli::create_admin' do
     it { is_expected.to contain_class('postfixadmin::cli::params') }
 
     it {
-      is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+      is_expected.to contain_exec("postfixadmin create_admin #{params[:admin]}")
         .with_command(%r{ admin add })
         .with_unless(%r{ admin view })
     }
@@ -31,7 +33,7 @@ describe 'postfixadmin::cli::create_admin' do
         it_behaves_like 'postfixadmin::cli::create_admin shared examples'
 
         it {
-          is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+          is_expected.to contain_exec("postfixadmin create_admin #{params[:admin]}")
             .with_command(%r{ mytitle })
             .without_command(%r{--superadmin})
             .with_unless(%r{ mytitle|})
@@ -43,13 +45,13 @@ describe 'postfixadmin::cli::create_admin' do
         let :params do
           default_params.merge(
             admin: 'someotheradmin',
-            password: 'secret',
+            password: 'secret'
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_admin shared examples'
         it {
-          is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+          is_expected.to contain_exec("postfixadmin create_admin #{params[:admin]}")
             .with_command(%r{ someotheradmin })
             .with_command(%r{ --password secret --password2 secret})
             .with_unless(%r{ someotheradmin|})
@@ -60,14 +62,14 @@ describe 'postfixadmin::cli::create_admin' do
         let(:title) { 'mytitle' }
         let :params do
           default_params.merge(
-            superadmin: true,
+            superadmin: true
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_admin shared examples'
 
         it {
-          is_expected.to contain_exec('postfixadmin create_admin ' + params[:admin])
+          is_expected.to contain_exec("postfixadmin create_admin #{params[:admin]}")
             .with_command(%r{--superadmin})
         }
       end

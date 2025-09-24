@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::cli::create_domain' do
@@ -11,11 +13,12 @@ describe 'postfixadmin::cli::create_domain' do
     it { is_expected.to contain_class('postfixadmin::cli::params') }
 
     it {
-      is_expected.to contain_exec('postfixadmin create_domain ' + params[:domain])
+      is_expected.to contain_exec("postfixadmin create_domain #{params[:domain]}")
         .with_command(%r{ domain add })
         .with_unless(%r{ domain view })
     }
   end
+
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
@@ -25,14 +28,14 @@ describe 'postfixadmin::cli::create_domain' do
         let :params do
           default_params.merge(
             description: title,
-            domain: title,
+            domain: title
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_domain shared examples'
 
         it {
-          is_expected.to contain_exec('postfixadmin create_domain ' + params[:domain])
+          is_expected.to contain_exec("postfixadmin create_domain #{params[:domain]}")
             .with_command(%r{ --description 'mytitle.ch' })
             .with_command(%r{ mytitle.ch })
             .with_command(%r{ --default-aliases|})
@@ -49,13 +52,13 @@ describe 'postfixadmin::cli::create_domain' do
         let :params do
           default_params.merge(
             domain: title,
-            default_aliases: false,
+            default_aliases: false
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_domain shared examples'
         it {
-          is_expected.to contain_exec('postfixadmin create_domain ' + params[:domain])
+          is_expected.to contain_exec("postfixadmin create_domain #{params[:domain]}")
             .with_command(%r{ mytitle.ch })
             .without_command(%r{--default-aliases})
         }
@@ -66,13 +69,13 @@ describe 'postfixadmin::cli::create_domain' do
         let :params do
           default_params.merge(
             domain: 'blah.ch',
-            description: 'Beschreibung',
+            description: 'Beschreibung'
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_domain shared examples'
         it {
-          is_expected.to contain_exec('postfixadmin create_domain ' + params[:domain])
+          is_expected.to contain_exec("postfixadmin create_domain #{params[:domain]}")
             .with_command(%r{ --description 'Beschreibung' })
             .with_command(%r{ blah.ch })
             .with_unless(%r{ blah.ch|})
@@ -88,13 +91,13 @@ describe 'postfixadmin::cli::create_domain' do
             aliases: 11,
             mailboxes: 22,
             quota: 33,
-            maxquota: 44,
+            maxquota: 44
           )
         end
 
         it_behaves_like 'postfixadmin::cli::create_domain shared examples'
         it {
-          is_expected.to contain_exec('postfixadmin create_domain ' + params[:domain])
+          is_expected.to contain_exec("postfixadmin create_domain #{params[:domain]}")
             .with_command(%r{ --aliases 11 })
             .with_command(%r{ --mailboxes 22 })
             .with_command(%r{ --quota 33 })

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'postfixadmin::config' do
@@ -19,6 +21,7 @@ describe 'postfixadmin::config' do
         .with_mode(params[:mode])
     }
   end
+
   on_supported_os.each do |os, os_facts|
     context "on #{os}" do
       let(:facts) { os_facts }
@@ -37,7 +40,7 @@ describe 'postfixadmin::config' do
             config_file: '/tmp/test',
             owner: 'someone',
             group: 'somegroup',
-            mode: '4242',
+            mode: '4242'
           )
         end
 
